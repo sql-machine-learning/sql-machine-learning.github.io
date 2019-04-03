@@ -1,12 +1,12 @@
 ---
-title: "Welcome to SQLFlow Home Page"
+title: "SQLFlow"
 layout: splash
 classes:
   - landing
   - wide
 permalink: "/"
 
-excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
+excerpt: "SQLFlow extends SQL to support machine learning. It bridges MySQL, Hive, and other SQL engines with AI systems like TensorFlow."
 header:
   overlay_color: "#333"
 ---

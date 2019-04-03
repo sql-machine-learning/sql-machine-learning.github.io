@@ -16,3 +16,5 @@ header:
 ## Section 2
 
 ![image-title-here](/assets/images/demo.gif)
+
+<center><img src="/assets/images/demo.gif" /></center>

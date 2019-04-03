@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+# Setting up your GitHub Pages site locally with Jekyll
 
-You can use the [editor on GitHub](https://github.com/sql-machine-learning/sql-machine-learning.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+1. Open Terminal in project root directory.
+1. Check whether you have Ruby 2.1.0 or higher installed:
+   ```
+   $ ruby --version
+   > ruby 2.X.X
+   ```
+1. Install Bundler:
+   ```
+   $ gem install bundler
+   # Installs the Bundler gem
+   ```
+1. Install Jekyll and other [dependencies](https://pages.github.com/versions/) from the GitHub Pages gem:
+   ```
+   $ bundle install
+   > Fetching gem metadata from https://rubygems.org/............
+   > Fetching version metadata from https://rubygems.org/...
+   > Fetching dependency metadata from https://rubygems.org/..
+   > Resolving dependencies...
+   ```
+1. Run your Jekyll site locally:
+   ```
+   $ bundle exec jekyll serve
+   > Configuration file: /Users/octocat/my-site/_config.yml
+   >            Source: /Users/octocat/my-site
+   >       Destination: /Users/octocat/my-site/_site
+   > Incremental build: disabled. Enable with --incremental
+   >      Generating...
+   >                    done in 0.309 seconds.
+   > Auto-regeneration: enabled for '/Users/octocat/my-site'
+   > Configuration file: /Users/octocat/my-site/_config.yml
+   >    Server address: http://127.0.0.1:4000/
+   >  Server running... press ctrl-c to stop.
+   ```
+1. Preview your local Jekyll site in your web browser at http://localhost:4000.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sql-machine-learning/sql-machine-learning.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

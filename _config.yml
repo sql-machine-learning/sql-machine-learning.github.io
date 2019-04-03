@@ -1,2 +1,17 @@
 theme: "minimal-mistakes-jekyll"
+minimal_mistakes_skin: "contrast"
+classes: wide
 
+include: ["_pages"]
+
+defaults:
+  - scope:
+      path: "_pages"
+    values:
+      layout: single
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/sql-machine-learning"

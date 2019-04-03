@@ -1,0 +1,7 @@
+main:
+  - title: "Quick-Start Guide"
+    url: /_pages/quick-start-guide.html
+  - title: "Documentation"
+    url: /_pages/documentation.html
+  - title: "About"
+    url: /_pages/about.html

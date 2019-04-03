@@ -1,188 +1,192 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-
-    <title>Carousel Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <title>SQLFlow: Bridging Data and AI</title>
+    <style>
+      body{margin:0;}
+      main,nav,section{display:block;}
+      a{background:transparent;}
+      a:active,a:hover{outline:0;}
+      h1{font-size:2em;margin:.67em 0;}
+      img{border:0;}
+      body{height:100%;}
+      *,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+      body{font-size:100%;}
+      body{background:white;color:black;padding:0;margin:0;font-family:Avenir,"proxima-nova",Helvetica,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1;position:relative;cursor:default;}
+      a:hover{cursor:pointer;}
+      img{max-width:100%;height:auto;}
+      img{-ms-interpolation-mode:bicubic;}
+      .right{float:right!important;}
+      .text-center{text-align:center!important;}
+      img{display:inline-block;vertical-align:middle;}
+      .row{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:68.75rem;*zoom:1;}
+      .row:before,.row:after{content:" ";display:table;}
+      .row:after{clear:both;}
+      .inline-list{margin:0 auto 1.0625rem auto;margin-left:-1.375rem;margin-right:0;padding:0;list-style:none;overflow:hidden;}
+      .inline-list>li{list-style:none;float:left;margin-left:1.375rem;display:block;}
+      .inline-list>li>*{display:block;}
+      .text-center{text-align:center!important;}
+      .text-center{text-align:center!important;}
+      div,ul,li,h1,h2,h3,p{margin:0;padding:0;}
+      a{color:#4d7ec6;text-decoration:none;line-height:inherit;}
+      a:hover,a:focus{color:#396bb3;}
+      p{font-family:inherit;font-weight:normal;font-size:1.125rem;line-height:1.6;margin-bottom:1.25rem;text-rendering:optimizeLegibility;}
+      h1,h2,h3{font-family:Avenir,"proxima-nova",Helvetica,Arial,sans-serif;font-weight:normal;font-style:normal;color:black;text-rendering:optimizeLegibility;margin-top:.2rem;margin-bottom:.5rem;line-height:1.4;}
+      h1{font-size:2.125rem;}
+      h2{font-size:1.6875rem;}
+      h3{font-size:1.375rem;}
+      ul{font-size:1.125rem;line-height:1.6;margin-bottom:1.25rem;list-style-position:outside;font-family:inherit;}
+      ul{margin-left:1.1rem;}
+      @media only screen and (min-width:40.063em){
+	  h1,h2,h3{line-height:1.4;}
+	  h1{font-size:2.75rem;}
+	  h2{font-size:2.3125rem;}
+	  h3{font-size:1.6875rem;}
+      }
+      @media print{
+	  *{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important;}
+	  a,a:visited{text-decoration:underline;}
+	  a[href]:after{content:" (" attr(href) ")";}
+	  img{page-break-inside:avoid;}
+	  img{max-width:100%!important;}
+	  p,h2,h3{orphans:3;widows:3;}
+	  h2,h3{page-break-after:avoid;}
+      }
+      .text-center{text-align:center!important;}
+      .off-canvas-wrap{-webkit-backface-visibility:hidden;position:relative;width:100%;overflow-x:hidden;}
+      .inner-wrap{-webkit-backface-visibility:hidden;position:relative;width:100%;*zoom:1;-webkit-transition:-webkit-transform 500ms ease;-moz-transition:-moz-transform 500ms ease;-ms-transition:-ms-transform 500ms ease;-o-transition:-o-transform 500ms ease;transition:transform 500ms ease;}
+      .inner-wrap:before,.inner-wrap:after{content:" ";display:table;}
+      .inner-wrap:after{clear:both;}
+      .tab-bar{-webkit-backface-visibility:hidden;background:white;color:white;height:2.8125rem;line-height:2.8125rem;position:relative;}
+      .tab-bar-section{padding:0 .625rem;position:absolute;text-align:center;height:2.8125rem;top:0;}
+      @media only screen and (min-width:40.063em){
+	  .tab-bar-section{text-align:left;}
+      }
+      .tab-bar-section.middle{left:2.8125rem;right:2.8125rem;}
+      @media only screen{
+	  .hide-for-small{display:none!important;}
+      }
+      @media only screen and (min-width:40.063em){
+	  .hide-for-small{display:inherit!important;}
+      }
+      @media only screen and (min-width:64.063em){
+	  .hide-for-small{display:inherit!important;}
+      }
+      @media only screen and (min-width:90.063em){
+	  .hide-for-small{display:inherit!important;}
+      }
+      @media only screen and (min-width:120.063em){
+	  .hide-for-small{display:inherit!important;}
+      }
+      body{color:black;}
+      body .off-canvas-wrap{font-family:Avenir,"proxima-nova",Helvetica,Arial,sans-serif;}
+      main{overflow:hidden;}
+      nav.tab-bar{margin:12px 0 5px;}
+      nav.tab-bar .middle.tab-bar-section{right:0;max-width:68.75rem;margin:0 auto;left:0;padding-bottom:70px;border-bottom:1px solid #ccc;}
+      nav.tab-bar .middle.tab-bar-section .main-nav ul{margin-top:16px;width:130px;}
+      @media only screen and (min-width:40.063em){
+	  nav.tab-bar .middle.tab-bar-section .main-nav ul{width:420px;}
+      }
+      nav.tab-bar .middle.tab-bar-section .main-nav ul li{margin-left:35px;}
+      nav.tab-bar .middle.tab-bar-section .main-nav ul li a{color:#7d7d7d;line-height:inherit;font-weight:500;padding:0 5px 5px 5px;border-bottom:2px solid #fff;-webkit-transition:border-color .5s;}
+      nav.tab-bar .middle.tab-bar-section .main-nav ul li a:hover{color:#454545;border-bottom:2px solid #3a99d9;}
+      body{height:100%;}
+      *,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+      body{font-size:100%;}
+      body{background:white;color:#222;padding:0;margin:0;font-family:"Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;font-weight:normal;font-style:normal;line-height:1;position:relative;cursor:default;}
+      a:hover{cursor:pointer;}
+      img{max-width:100%;height:auto;}
+      img{-ms-interpolation-mode:bicubic;}
+      .right{float:right!important;}
+      .text-center{text-align:center!important;}
+      img{display:inline-block;vertical-align:middle;}
+      #home{color:#454545;}
+      #home .products{margin:30px 0;}
+      /*! CSS Used from: Embedded */
+      .main-page{max-width:1014px;margin:0 auto;}
+      p{padding-left:6px;padding-right:6px;text-align:justify;max-width:912px;margin-left:auto;margin-right:auto;}
+      h3{max-width:912px;margin-left:auto;margin-right:auto;}
+      .require{font-size:0.9rem;margin-bottom:30px;text-align:center;}
+      #firstrequire{margin-bottom:2px;}
+      #img1{margin-bottom:0px;}
+      h1,h2,h3{color:#454545;}
+      #home h1{font-size:2rem;}
+      #home h2{font-size:1.2rem;}
+      h3{padding:20px 0 10px 0;border-top:1px dashed #aaa;}
+      .l{text-align:left;padding-left:6px;padding-right:6px;}
+      .r{text-align:right;padding-right:6px;padding-right:6px;}
+      @media only screen and (min-width: 40.063em){
+	  #home h1{font-size:2.7rem;}
+	  #home h2{font-size:1.8rem;}
+      }
+    </style>
   </head>
   <body>
+    <main>
+      <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+          <!-- main nav -->
+          <nav class="tab-bar">
+            <section class="middle tab-bar-section">
+              <div class="title">
+                <div class="main-nav">
+		  <!-- <img src="sqlflow-logo-small.png" height="30"></img> -->
+                  <ul class="inline-list right">
+                    <li class="hide-for-small"><a href="#">Quick Start</a></li>
+                    <li class="hide-for-small"><a href="#">Documents</a></li>
+		    <li class="hide-for-small"><a href="#">Github</a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </nav>
+          <!-- Main Content -->
+          <section class="main-section">
+            <section id="home">
+              <section class="products text-center">
+                <div class="row">
+                  <div class="main-page">
+                    <h1>SQLFlow</h1>
+                    <h2>Extends SQL to support AI. Extract knowledge from Data.</h2>
+                    <p class="require" id="firstrequire">Currently support MySQL and TensorFlow.  Expanding to Apache Hive, Alibaba ODPS, and PyTorch</p>
+                    <img id="img1" src="file:///Users/yi.w/Desktop/build.jpg" width="1014" height="726">
 
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+                    <h3 class="l">Rich User Interface</h3>
+                    <!-- <img src="img/2.png" width="1014" height="386"> -->
+                    <p class="l">Type SQL statements in Jupyter Notebook and watching the progress with embedded ,TensorBoard!</p>
+                    <h3 class="r">Many Database Management Systems</h3>
+                    <!-- <img src="img/3.png" width="1014" height="360"> -->
+                    <p class="r">Portable to MySQL, Hive, Alibaba ODPS, and many!</p>
+                    <h3 class="l">Many Machine Learning Toolkits</h3>
+                    <!-- <img src="img/4.png" width="1014" height="380"> -->
+                    <p class="l">Extensible to TensorFlow, PyTorch, xgboost, and more!</p>
+                  </div>
+                </div>
         </div>
-      </nav>
-    </header>
-
-    <main role="main">
-
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
+</div>
+</main>
+<script src="/js/main.js"></script>
+<script>
+  $(document).foundation();
+  $("img").error(function () {
+      $(this).css('border', 'none');
+  });
 
-
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-
-      <div class="container marketing">
-
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img src="assets/images/demo.gif", class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-
-      </div><!-- /.container -->
-
-
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-    </main>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../../../assets/js/vendor/holder.min.js"></script>
-  </body>
-</html>
+  var audio = $('audio')[0];
+  $(document).on("click", "#playBtn", function() {
+      audio.play();
+  });
+</script>
+<script src="/js/retina.0.0.2.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-17331483-8', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>1

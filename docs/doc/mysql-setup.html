@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  
+
+  <title>Run MySQL Server and Client in Docker Containers - Sqlflow</title>
+  <link rel="stylesheet" href="/assets/css/just-the-docs.css">
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-17331483-8', '');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="page-wrap">
+    <div class="side-bar">
+      <a href="" class="site-title fs-6 lh-tight">Sqlflow</a>
+      <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      <div class="navigation main-nav js-main-nav">
+        <nav role="navigation" aria-label="Main navigation">
+  <ul class="navigation-list">
+    
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/walkthrough.html" class="navigation-list-link">SQLFlow: Code Walkthrough</a>
+            
+          </li>
+        
+      
+    
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/build-tensorflow.html" class="navigation-list-link">Build TensorFlow from Source Code using Docker</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/build.html" class="navigation-list-link">Canonical Development Environment</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/close_producer_from_consumer.html" class="navigation-list-link">Closing the producer goroutine from the consumer</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/database_abstraction_layer.html" class="navigation-list-link">Compatibility with Various SQL Engines</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item active">
+            
+            <a href="/doc/mysql-setup.html" class="navigation-list-link active">Run MySQL Server and Client in Docker Containers</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/pipe.html" class="navigation-list-link">Piping Responses</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/quickstart.html" class="navigation-list-link">Quick start</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/sql_parser.html" class="navigation-list-link">Extended SQL Parser Design</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/submitter.html" class="navigation-list-link">Submitter</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/syntax.html" class="navigation-list-link">SQLFlow: Design Doc</a>
+            
+          </li>
+        
+      
+    
+      
+    
+  </ul>
+</nav>
+
+      </div>
+      <footer role="contentinfo" class="site-footer">
+        <p class="text-small text-grey-dk-000 mb-0">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
+      </footer>
+    </div>
+    <div class="main-content-wrap js-main-content" tabindex="0">
+      <div class="page-header">
+        <div class="main-content">
+          
+          <div class="search js-search">
+            <div class="search-input-wrap">
+              <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search Sqlflow" aria-label="Search Sqlflow" autocomplete="off">
+              <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg>
+            </div>
+            <div class="js-search-results search-results-wrap"></div>
+          </div>
+          
+          
+            <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
+              
+                <li class="d-inline-block my-0"><a href="https://github.com/sql-machine-learning/sqlflow">GitHub</a></li>
+              
+            </ul>
+          
+        </div>
+      </div>
+      <div class="main-content">
+        
+          
+        
+        <div id="main-content" class="page-content" role="main">
+          <h1 id="run-mysql-server-and-client-in-docker-containers">Run MySQL Server and Client in Docker Containers</h1>
+
+<p>The document explains how to setup MySQL in our development environment.</p>
+
+<h2 id="run-mysql-server-in-a-docker-container">Run MySQL Server in a Docker Container</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="se">\</span>
+   <span class="nt">-v</span> /tmp/test1:/var/lib/mysql <span class="se">\</span>
+   <span class="nt">--name</span> mysql01 <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root <span class="se">\</span>
+   <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_HOST</span><span class="o">=</span><span class="s1">'%'</span> <span class="se">\</span>
+   <span class="nt">-p</span> 3306:3306 <span class="se">\</span>
+   <span class="nt">-d</span> <span class="se">\</span>
+   mysql/mysql-server:8.0
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>the <code class="highlighter-rouge">-v</code> option ensures that the database is saved on the host.  The default directory where MySQL saves the database is <code class="highlighter-rouge">/var/lib/mysql</code>. This directory can be configured in <code class="highlighter-rouge">/etc/mysql/my.cnf</code>, as explained in <a href="https://www.mkyong.com/mysql/where-does-mysql-stored-the-data-in-my-harddisk/">this post</a>.  By overlaying the directory <code class="highlighter-rouge">/tmp/test1</code> on the host to <code class="highlighter-rouge">/var/lib/mysql</code>, we “cheat” MySQL to save databases on the host.  So, we can kill the container and restart it, and the database is still there.</p>
+
+    <p>Please be aware that the directory on the host must be empty the first time we run the above command; otherwise, MySQL would fail to initialize.  I figured out this problem after several failures using <code class="highlighter-rouge">docker logs</code>.</p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">-e</code> option sets the root password of MySQL to “root”.  Feel free to set it to any password you like.</p>
+  </li>
+  <li>
+    <p>the second <code class="highlighter-rouge">-e</code> options sets <code class="highlighter-rouge">MYSQL_ROOT_HOST</code> to a <a href="https://github.com/docker-library/mysql/issues/241#issuecomment-263011059">wildcard</a> so to allow clients connecting to the server via TCP/IP as the user “root”.  This trick works with MySQL 5.7 and 8.0, but not the most recent under-development version.</p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">--name</code> option names the container to <code class="highlighter-rouge">mysql01</code>, which can be used to refer to this container.</p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">-p</code> option maps the port 3306, on which the MySQL server listens, to the same port on the host, so that clients could connect to the server via TCP/IP.</p>
+  </li>
+</ul>
+
+<h2 id="run-mysql-client-in-the-server-container">Run MySQL Client in the Server Container</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> mysql01 mysql <span class="nt">-uroot</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<p>This command executes the command <code class="highlighter-rouge">mysql</code>, which is the command line tool of MySQL, in the container named <code class="highlighter-rouge">mysql01</code>.</p>
+
+<ul>
+  <li>
+    <p>The command line flags of <code class="highlighter-rouge">mysql</code> include <code class="highlighter-rouge">-u</code>, which specifies the username of MySQL, and <code class="highlighter-rouge">-p</code>, which makes MySQL prompts for the password.  For this example, we should type the password “root”, which was set in the previous command.</p>
+  </li>
+  <li>
+    <p>Please wait for a few seconds after the starting of the MySQL server container before we execute the client; otherwise, the startup of the client might fail.</p>
+  </li>
+  <li>
+    <p>Once we get into the MySQL client, we can type SQL commands, e.g.,</p>
+
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">yi</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="run-client-in-a-different-container-on-the-same-host">Run Client in a Different Container on the Same Host</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="se">\</span>
+   <span class="nt">-v</span> /tmp/test1:/var/lib/mysql <span class="se">\</span>
+   mysql/mysql-server:8.0 <span class="se">\</span>
+   mysql <span class="nt">-uroot</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The <code class="highlighter-rouge">-v</code> option maps the database directory on the host to the client container. This mapping is necessary because, by default, the client talks to the server via Unix socket <code class="highlighter-rouge">/var/lib/mysql/mysql.sock</code>, which is <code class="highlighter-rouge">/tmp/test1/mysql.sock</code> on the host.</li>
+</ul>
+
+<h2 id="run-client-in-a-container-on-a-remote-host">Run Client in a Container on a Remote Host</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+   <span class="nt">--rm</span> <span class="nt">-it</span> <span class="se">\</span>
+   mysql/mysql-server:8.0 <span class="se">\</span>
+   mysql <span class="nt">-h</span> 192.168.1.3 <span class="nt">-P</span> 3306 <span class="nt">-uroot</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<ul>
+  <li>the <code class="highlighter-rouge">-h</code> option tells the client where the server is running on.  In this example, the given IP is the one of the host where I ran the MySQL server container.</li>
+</ul>
+
+<p>Please be aware that the above command works only if the server allows remote connections.</p>
+
+<h2 id="run-python-client-in-a-container">Run Python Client in a Container</h2>
+
+<p>To write a Python client, we need to install the Python package <code class="highlighter-rouge">mysql-connector-python</code>.</p>
+
+<pre><code class="language-Dockerfile">FROM python:2.7
+RUN pip install mysql-connector-python
+</code></pre>
+
+<p>Please be aware that some <a href="https://www.w3schools.com/python/python_mysql_getstarted.asp">documents</a> says that we need to install <code class="highlighter-rouge">mysql-connector</code>.  I tried; but the <code class="highlighter-rouge">mysql.connector.connect</code> call failed with the error <code class="highlighter-rouge">mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported</code>.</p>
+
+<p>Build the Docker image:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> sqlflow <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Run the image:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> sqlflow bash
+</code></pre></div></div>
+
+<p>and we can start Python and run the following Python code snippet</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import mysql.connector
+&gt;&gt;&gt; db = mysql.connector.connect(user='root', passwd='root', host='192.168.1.3')
+&gt;&gt;&gt; print(db)
+&lt;mysql.connector.connection_cext.CMySQLConnection object at 0x7fbab9f3fed0&gt;
+</code></pre></div></div>
+
+<h2 id="run-a-go-client">Run a Go Client</h2>
+
+<p>In order to connect to a database, you need to import the database’s driver first.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export GOPATH=$HOME/go
+go get -u github.com/go-sql-driver/mysql
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">go run</code> the following file</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+	</span><span class="s">"database/sql"</span><span class="x">
+	</span><span class="s">"github.com/go-sql-driver/mysql"</span><span class="x">
+	</span><span class="s">"log"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">testConfig</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">mysql</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span><span class="x">
+		</span><span class="n">User</span><span class="o">:</span><span class="x">   </span><span class="s">"root"</span><span class="p">,</span><span class="x">
+		</span><span class="n">Passwd</span><span class="o">:</span><span class="x"> </span><span class="s">"root"</span><span class="p">,</span><span class="x">
+		</span><span class="n">Net</span><span class="o">:</span><span class="x">    </span><span class="s">"tcp"</span><span class="p">,</span><span class="x">
+		</span><span class="n">Addr</span><span class="o">:</span><span class="x">   </span><span class="s">"localhost:3306"</span><span class="p">,</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="n">db</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">sql</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s">"mysql"</span><span class="p">,</span><span class="x"> </span><span class="n">testConfig</span><span class="o">.</span><span class="n">FormatDSN</span><span class="p">())</span><span class="x">
+	</span><span class="k">if</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="k">defer</span><span class="x"> </span><span class="n">db</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

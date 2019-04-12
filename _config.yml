@@ -1,15 +1,22 @@
-remote_theme: "mmistakes/minimal-mistakes@4.15.2"
+remote_theme: pmarsceill/just-the-docs
 
-minimal_mistakes_skin: "contrast"
 classes: wide
 
-include: ["_pages"]
+include: ["pages", "doc"]
 
-defaults:
-  - scope:
-      path: "_pages"
-    values:
-      layout: single
+search_enabled: true
+
+title: 'Sqlflow'
+
+destination: 'docs'
+
+ga_tracking: UA-17331483-8
+
+aux_links:
+  "GitHub":
+    - "https://github.com/sql-machine-learning/sqlflow"
+
+# baseurl: "/sql-machine-learning.github.io/"
 
 footer:
   links:

@@ -10,9 +10,13 @@ title: 'Sqlflow'
 
 destination: 'docs'
 
+ga_tracking: UA-17331483-8
+
 aux_links:
   "GitHub":
     - "https://github.com/sql-machine-learning/sqlflow"
+
+baseurl: "/sql-machine-learning.github.io/"
 
 footer:
   links:

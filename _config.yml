@@ -8,6 +8,8 @@ search_enabled: true
 
 title: 'Sqlflow'
 
+destination: 'docs'
+
 aux_links:
   "GitHub":
     - "https://github.com/sql-machine-learning/sqlflow"

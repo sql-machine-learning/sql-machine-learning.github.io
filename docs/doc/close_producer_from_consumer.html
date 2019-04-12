@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  
+
+  <title>Closing the producer goroutine from the consumer - Sqlflow</title>
+  <link rel="stylesheet" href="/assets/css/just-the-docs.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="page-wrap">
+    <div class="side-bar">
+      <a href="" class="site-title fs-6 lh-tight">Sqlflow</a>
+      <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      <div class="navigation main-nav js-main-nav">
+        <nav role="navigation" aria-label="Main navigation">
+  <ul class="navigation-list">
+    
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/walkthrough.html" class="navigation-list-link">SQLFlow: Code Walkthrough</a>
+            
+          </li>
+        
+      
+    
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/build-tensorflow.html" class="navigation-list-link">Build TensorFlow from Source Code using Docker</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/build.html" class="navigation-list-link">Canonical Development Environment</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item active">
+            
+            <a href="/doc/close_producer_from_consumer.html" class="navigation-list-link active">Closing the producer goroutine from the consumer</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/database_abstraction_layer.html" class="navigation-list-link">Compatibility with Various SQL Engines</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/mysql-setup.html" class="navigation-list-link">Run MySQL Server and Client in Docker Containers</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/pipe.html" class="navigation-list-link">Piping Responses</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/quickstart.html" class="navigation-list-link">Quick start</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/sql_parser.html" class="navigation-list-link">Extended SQL Parser Design</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/submitter.html" class="navigation-list-link">Submitter</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc/syntax.html" class="navigation-list-link">SQLFlow: Design Doc</a>
+            
+          </li>
+        
+      
+    
+      
+    
+  </ul>
+</nav>
+
+      </div>
+      <footer role="contentinfo" class="site-footer">
+        <p class="text-small text-grey-dk-000 mb-0">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
+      </footer>
+    </div>
+    <div class="main-content-wrap js-main-content" tabindex="0">
+      <div class="page-header">
+        <div class="main-content">
+          
+          <div class="search js-search">
+            <div class="search-input-wrap">
+              <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search Sqlflow" aria-label="Search Sqlflow" autocomplete="off">
+              <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg>
+            </div>
+            <div class="js-search-results search-results-wrap"></div>
+          </div>
+          
+          
+            <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
+              
+                <li class="d-inline-block my-0"><a href="https://github.com/sql-machine-learning/sqlflow">GitHub</a></li>
+              
+            </ul>
+          
+        </div>
+      </div>
+      <div class="main-content">
+        
+          
+        
+        <div id="main-content" class="page-content" role="main">
+          <h1 id="closing-the-producer-goroutine-from-the-consumer">Closing the producer goroutine from the consumer</h1>
+
+<p>The producer-and-consumer pattern is well used in Go concurrent programming. When
+the consumer stops, we want to gracefully stop the producer as well.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>When a gRPC server receives a streaming request,  it usually calls a
+<a href="https://talks.golang.org/2012/concurrency.slide#25">function that returns a channel</a>,
+reads the result from that channel and send the result to the client one by one.</p>
+
+<p>Take the following code for instance: upon receiving a request, the main goroutine
+<code class="highlighter-rouge">Service</code> calls <code class="highlighter-rouge">launchJob</code>. <code class="highlighter-rouge">launchJob</code> starts a separate goroutine as an anonymous
+function call and returns a channel. In the anonymous function, items will be sent to
+channel. And <code class="highlighter-rouge">Service</code> on the otherside of the channel will reads from it.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="n">Service</span><span class="p">(</span><span class="n">req</span><span class="x"> </span><span class="o">*</span><span class="n">Request</span><span class="p">,</span><span class="x"> </span><span class="n">stream</span><span class="x"> </span><span class="o">*</span><span class="n">StreamResponse</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">result</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">launchJob</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">Content</span><span class="p">)</span><span class="x">
+  </span><span class="k">for</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">result</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">stream</span><span class="o">.</span><span class="n">Send</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+      </span><span class="c">// should we signal the running goroutine so it will stop sending?</span><span class="x">
+      </span><span class="k">return</span><span class="x"> </span><span class="n">e</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+  </span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">launchJob</span><span class="p">(</span><span class="n">content</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="k">chan</span><span class="x"> </span><span class="n">Item</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">chan</span><span class="x"> </span><span class="n">Item</span><span class="p">)</span><span class="x">
+  
+  </span><span class="k">go</span><span class="x"> </span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">defer</span><span class="x"> </span><span class="nb">close</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="x">
+
+    </span><span class="n">acquireScarceResources</span><span class="p">()</span><span class="x">
+    </span><span class="k">defer</span><span class="x"> </span><span class="n">releaseScarceResources</span><span class="p">()</span><span class="x">
+
+    </span><span class="o">...</span><span class="x">
+    </span><span class="c">// if stream.Send(result) returns an error and the Service returns, this will be blocked</span><span class="x">
+    </span><span class="n">c</span><span class="x"> </span><span class="o">&lt;-</span><span class="x"> </span><span class="n">Item</span><span class="p">{}</span><span class="x">
+    </span><span class="o">...</span><span class="x">
+  </span><span class="p">}()</span><span class="x">
+  
+  </span><span class="k">return</span><span class="x"> </span><span class="n">c</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>There is a major problem in this implementation. As pointed out by the comment,
+if the <code class="highlighter-rouge">Send</code> in <code class="highlighter-rouge">Service</code> returns an error, the <code class="highlighter-rouge">Service</code> function will return,
+leaving the anonymous function being blocked on <code class="highlighter-rouge">c &lt;- Item{}</code> forever.</p>
+
+<p>This problem is important because the leaking goroutine usually owns scarce system
+resources such as network connection and memory.</p>
+
+<h2 id="solution-pipeline-explicit-cancellation">Solution: pipeline explicit cancellation</h2>
+
+<p>Inspired by this <a href="https://blog.golang.org/pipelines">blog post</a> section
+<em>Explicit cancellation</em>, we can signal the cancellation via closing on a separate
+channel. And we can follow the terminology as <code class="highlighter-rouge">io.Pipe</code>.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">sql</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+	</span><span class="s">"errors"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">var</span><span class="x"> </span><span class="n">ErrClosedPipe</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">errors</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"pipe: write on closed pipe"</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// pipe follows the design at https://blog.golang.org/pipelines</span><span class="x">
+</span><span class="c">// - wrCh: chan for piping data</span><span class="x">
+</span><span class="c">// - done: chan for signaling Close from Reader to Writer</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">pipe</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">wrCh</span><span class="x"> </span><span class="k">chan</span><span class="x"> </span><span class="k">interface</span><span class="p">{}</span><span class="x">
+	</span><span class="n">done</span><span class="x"> </span><span class="k">chan</span><span class="x"> </span><span class="k">struct</span><span class="p">{}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// PipeReader reads real data</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">PipeReader</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">p</span><span class="x"> </span><span class="o">*</span><span class="n">pipe</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// PipeWriter writes real data</span><span class="x">
+</span><span class="k">type</span><span class="x"> </span><span class="n">PipeWriter</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">p</span><span class="x"> </span><span class="o">*</span><span class="n">pipe</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Pipe creates a synchronous in-memory pipe.</span><span class="x">
+</span><span class="c">//</span><span class="x">
+</span><span class="c">// It is safe to call Read and Write in parallel with each other or with Close.</span><span class="x">
+</span><span class="c">// Parallel calls to Read and parallel calls to Write are also safe:</span><span class="x">
+</span><span class="c">// the individual calls will be gated sequentially.</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="n">Pipe</span><span class="p">()</span><span class="x"> </span><span class="p">(</span><span class="o">*</span><span class="n">PipeReader</span><span class="p">,</span><span class="x"> </span><span class="o">*</span><span class="n">PipeWriter</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">p</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">pipe</span><span class="p">{</span><span class="x">
+		</span><span class="n">wrCh</span><span class="o">:</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">chan</span><span class="x"> </span><span class="k">interface</span><span class="p">{}),</span><span class="x">
+		</span><span class="n">done</span><span class="o">:</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">chan</span><span class="x"> </span><span class="k">struct</span><span class="p">{})}</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="o">&amp;</span><span class="n">PipeReader</span><span class="p">{</span><span class="n">p</span><span class="p">},</span><span class="x"> </span><span class="o">&amp;</span><span class="n">PipeWriter</span><span class="p">{</span><span class="n">p</span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Close closes the reader; subsequent writes to the</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">PipeReader</span><span class="p">)</span><span class="x"> </span><span class="n">Close</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="nb">close</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">done</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// ReadAll returns the data chan. The caller should</span><span class="x">
+</span><span class="c">// use it as `for r := range pr.ReadAll()`</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">PipeReader</span><span class="p">)</span><span class="x"> </span><span class="n">ReadAll</span><span class="p">()</span><span class="x"> </span><span class="k">chan</span><span class="x"> </span><span class="k">interface</span><span class="p">{}</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">wrCh</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Close closes the writer; subsequent ReadAll from the</span><span class="x">
+</span><span class="c">// read half of the pipe will return a closed channel.</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="o">*</span><span class="n">PipeWriter</span><span class="p">)</span><span class="x"> </span><span class="n">Close</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="nb">close</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">wrCh</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Write writes the item to the underlying data stream.</span><span class="x">
+</span><span class="c">// It returns ErrClosedPipe when the data stream is closed.</span><span class="x">
+</span><span class="k">func</span><span class="x"> </span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="o">*</span><span class="n">PipeWriter</span><span class="p">)</span><span class="x"> </span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="x"> </span><span class="k">interface</span><span class="p">{})</span><span class="x"> </span><span class="kt">error</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">select</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="k">case</span><span class="x"> </span><span class="n">w</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">wrCh</span><span class="x"> </span><span class="o">&lt;-</span><span class="x"> </span><span class="n">item</span><span class="o">:</span><span class="x">
+		</span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x">
+	</span><span class="k">case</span><span class="x"> </span><span class="o">&lt;-</span><span class="n">w</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">done</span><span class="o">:</span><span class="x">
+		</span><span class="k">return</span><span class="x"> </span><span class="n">ErrClosedPipe</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<p>And the consumer and producer be can implemented as</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="n">Service</span><span class="p">(</span><span class="n">req</span><span class="x"> </span><span class="o">*</span><span class="n">Request</span><span class="p">,</span><span class="x"> </span><span class="n">stream</span><span class="x"> </span><span class="o">*</span><span class="n">StreamResponse</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x"> </span><span class="p">{</span><span class="x">
+  </span><span class="n">pr</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">launchJob</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">Content</span><span class="p">)</span><span class="x">
+  </span><span class="k">defer</span><span class="x"> </span><span class="n">pr</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x">
+  </span><span class="k">for</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">pr</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">stream</span><span class="o">.</span><span class="n">Send</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+      </span><span class="k">return</span><span class="x"> </span><span class="n">e</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+  </span><span class="p">}</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">launchJob</span><span class="p">(</span><span class="n">content</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="n">PipeReader</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">pr</span><span class="p">,</span><span class="x"> </span><span class="n">pw</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">Pipe</span><span class="p">()</span><span class="x">
+	</span><span class="k">go</span><span class="x"> </span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+		</span><span class="k">defer</span><span class="x"> </span><span class="n">pw</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span><span class="x">
+		
+		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">pw</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">Item</span><span class="p">{});</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+			</span><span class="k">return</span><span class="x">
+		</span><span class="p">}</span><span class="x">
+	</span><span class="p">}</span><span class="x">
+	</span><span class="k">return</span><span class="x"> </span><span class="n">pr</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div></div>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ol>
+  <li><a href="https://groups.google.com/forum/#!topic/golang-nuts/Oth9CmJPoqo">Google Form: Channel send timeout</a></li>
+  <li><a href="https://gobyexample.com/timeouts">Go by Example: Timeouts</a></li>
+  <li><a href="https://www.youtube.com/watch?v=QDDwwePbDtw&amp;t=111s">Google I/O 2013 - Advanced Go Concurrency Patterns</a></li>
+  <li><a href="https://talks.golang.org/2012/concurrency.slide">Go Concurrency Patterns Talk</a></li>
+  <li><a href="https://blog.golang.org/pipelines">Go Concurrency Patterns: Pipelines and cancellation</a></li>
+</ol>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

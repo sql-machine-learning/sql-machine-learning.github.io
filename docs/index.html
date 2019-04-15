@@ -685,16 +685,26 @@
             border-top: 1px dashed #aaa;
         }
 
-        section.feature h3,  section.feature p{
+        section.feature{
             text-align: left;
             padding-left: 6px;
             padding-right: 6px;
         }
 
-        section.feature:nth-of-type(2n) h3,  section.feature:nth-of-type(2n) p {
+        section.feature img {
+            width: 550px;
+            margin: auto 20px;
+        }
+
+        section.feature:nth-of-type(2n){
             text-align: right;
             padding-right: 6px;
             padding-right: 6px;
+        }
+
+        section.feature .gif-holder {
+            width: 550px;
+            height: 275px;
         }
 
         @media only screen and (min-width: 40.063em) {
@@ -713,7 +723,7 @@
         }
 
         .main-nav .logo img {
-            height: 50px;
+            height: 30px;
         }
 
         .main-page .intro {
@@ -723,7 +733,7 @@
 
         .main-page .intro h1 {
             margin: 50px auto;
-            color: #ffb214;
+            color: #1BA2FF;
         }
 
         .main-page .intro p {
@@ -746,13 +756,13 @@
                     <div class="title">
                         <div class="main-nav">
                             <div class="logo">
-                                <img alt="logo" src="assets/sqlflow-logo.jpg" height="30"/>
+                                <img alt="logo" src="assets/sqlflow-logo.svg" />
                             </div>
 
                             <!-- <img src="sqlflow-logo-small.png" height="30"></img> -->
                             <ul class="inline-list right">
-                                <li class="hide-for-small"><a href="doc/quickstart">Quick Start</a></li>
-                                <li class="hide-for-small"><a href="doc/walkthrough">Documents</a></li>
+                                <li class="hide-for-small"><a href="sqlflow/doc/quickstart">Quick Start</a></li>
+                                <li class="hide-for-small"><a href="sqlflow/">Documents</a></li>
                                 <li class="hide-for-small"><a href="https://github.com/sql-machine-learning">Github</a></li>
                             </ul>
                         </div>
@@ -795,16 +805,25 @@
                                     <section class="feature">
                                         <h3>Easy to Learn</h3>
                                         <p>Manipulate data and running AI with SQL</p>
+                                        
+                                        <img alt="gif" src="assets/train.gif"/>
+                                        
                                     </section>
                                 
                                     <section class="feature">
                                         <h3>Work with Many Database Management Systems</h3>
                                         <p>MySQL, Hive, Alibaba ODPS, Oracle and you name it!</p>
+                                        
+                                        <img alt="gif" src="assets/select.gif"/>
+                                        
                                     </section>
                                 
                                     <section class="feature">
                                         <h3>Support Many Machine Learning Toolkits</h3>
                                         <p>TensorFlow, PyTorch, xgboost, and more!</p>
+                                        
+                                        <div class="gif-holder"></div>
+                                        
                                     </section>
                                 
                             </div>

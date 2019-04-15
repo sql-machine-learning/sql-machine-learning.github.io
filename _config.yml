@@ -2,8 +2,6 @@ remote_theme: pmarsceill/just-the-docs
 
 classes: wide
 
-include: ["pages", "doc"]
-
 search_enabled: true
 
 title: 'Sqlflow'
@@ -15,6 +13,8 @@ ga_tracking: UA-17331483-8
 aux_links:
   "GitHub":
     - "https://github.com/sql-machine-learning/sqlflow"
+
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
 # baseurl: "/sql-machine-learning.github.io/"
 

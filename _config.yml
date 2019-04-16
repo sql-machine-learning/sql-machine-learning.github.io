@@ -4,7 +4,7 @@ classes: wide
 
 search_enabled: true
 
-title: 'Sqlflow'
+title: 'SQLFLOW'
 
 destination: 'docs'
 
@@ -17,6 +17,12 @@ aux_links:
 exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
 baseurl: "/sql-machine-learning.github.io/"
+
+defaults:
+  - scope:
+      path: "sqlflow"
+    values:
+      layout: "doc"
 
 footer:
   links:

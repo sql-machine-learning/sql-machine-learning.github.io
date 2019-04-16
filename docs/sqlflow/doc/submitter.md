@@ -10,7 +10,6 @@ When a user types in an extended SQL statement, SQLFlow first parses and semanti
 
 In the latter case, SQLFlow produces a job description (`TrainDescription` or `PredictDescription`) and hands it over to the submitter. For a training SQL, SQLFlow produces `TrainDescription`; for prediction SQL, SQLFlow produces `PredDescription`. The concrete definition of the description looks like the following
 
-
 {% raw %}
 ```go
 type ColumnType struct {
@@ -46,6 +45,7 @@ type PredDescription struct {
     ModelName      string // e.g. my_dnn_model
 }
 ```
+
 {% endraw %}
 
 ## Submitter Interface

@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SQLFlow: Bridging Data and AI</title>
     <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
     <style type="text/css">
@@ -552,6 +552,9 @@
             nav.tab-bar .middle.tab-bar-section .main-nav ul {
                 width: 420px;
             }
+            nav.tab-bar .off-canvas-nav-item {
+                display: none;
+            }
         }
 
         nav.tab-bar .middle.tab-bar-section .main-nav ul li {
@@ -570,6 +573,88 @@
         nav.tab-bar .middle.tab-bar-section .main-nav ul li a:hover {
             color: #454545;
             border-bottom: 2px solid #3a99d9;
+        }
+
+        .right-off-canvas-menu {
+            -webkit-backface-visibility: hidden;
+            width: 15.625rem;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            overflow-y: auto;
+            background-color: #333;
+            z-index: 1001;
+            box-sizing: content-box;
+            -webkit-overflow-scrolling: touch;
+            -webkit-transform: translate3d(100%, 0, 0);
+            -moz-transform: translate3d(100%, 0, 0);
+            -ms-transform: translate3d(100%, 0, 0);
+            -o-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+            right: 0
+        }
+
+        .right-off-canvas-menu * {
+            -webkit-backface-visibility: hidden
+        }
+
+        ul.off-canvas-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0
+        }
+
+        ul.off-canvas-list li label {
+            padding: .3rem .9375rem;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: #444;
+            border-top: 1px solid #5e5e5e;
+            border-bottom: 0;
+            margin: 0
+        }
+
+        ul.off-canvas-list li a {
+            display: block;
+            padding: .66667rem;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid #262626;
+            transition: background 300ms ease
+        }
+
+        ul.off-canvas-list li a:hover {
+            background: #b3b3b3
+        }
+
+        .move-right > .inner-wrap {
+            -webkit-transform: translate3d(15.625rem, 0, 0);
+            -moz-transform: translate3d(15.625rem, 0, 0);
+            -ms-transform: translate3d(15.625rem, 0, 0);
+            -o-transform: translate3d(15.625rem, 0, 0);
+            transform: translate3d(15.625rem, 0, 0)
+        }
+
+        .move-right .exit-off-canvas {
+            -webkit-backface-visibility: hidden;
+            transition: background 300ms ease;
+            cursor: pointer;
+            box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        @media only screen and (min-width: 40.063em) {
+            .move-right .exit-off-canvas:hover {
+                background: rgba(255, 255, 255, 0.05)
+            }
         }
 
         body {
@@ -666,6 +751,59 @@
             margin-bottom: 2px;
         }
 
+        .move-left > .inner-wrap {
+            -webkit-transform: translate3d(-15.625rem, 0, 0);
+            -moz-transform: translate3d(-15.625rem, 0, 0);
+            -ms-transform: translate3d(-15.625rem, 0, 0);
+            -o-transform: translate3d(-15.625rem, 0, 0);
+            transform: translate3d(-15.625rem, 0, 0)
+        }
+
+        .move-left .exit-off-canvas {
+            -webkit-backface-visibility: hidden;
+            transition: background 300ms ease;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        @media only screen and (min-width: 40.063em) {
+            .move-left .exit-off-canvas:hover {
+                background: rgba(255, 255, 255, 0.05)
+            }
+        }
+
+        .right-off-canvas-menu ul {
+            list-style-type: none
+        }
+
+        .right-off-canvas-menu ul li {
+            font-size: 1rem
+        }
+
+        .right-off-canvas-menu ul li a {
+            color: gray;
+            font-size: .875rem;
+            display: inline-block
+        }
+
+        .right-off-canvas-menu ul.main-pages {
+            color: gray;
+            padding: 20px 0;
+        }
+
+        .right-off-canvas-menu ul.main-pages li a {
+            font-size: 1rem;
+            margin: 0 0 15px 0
+        }
+
         h1,
         h2,
         h3 {
@@ -702,6 +840,10 @@
             padding-right: 6px;
         }
 
+        section.feature:nth-of-type(2n) p {
+            text-align: right;
+        }
+
         section.feature .gif-holder {
             width: 550px;
             height: 275px;
@@ -718,8 +860,10 @@
         }
 
         .main-nav .logo {
-            width: 100px;
+            width: 120px;
             display: inline;
+            float: left;
+            padding: 5px 10px;
         }
 
         .main-nav .logo img {
@@ -764,12 +908,22 @@
                                 <li class="hide-for-small"><a href="sqlflow/doc/quickstart">Quick Start</a></li>
                                 <li class="hide-for-small"><a href="sqlflow/">Documents</a></li>
                                 <li class="hide-for-small"><a href="https://github.com/sql-machine-learning">Github</a></li>
+                                <li class="off-canvas-nav-item" id="menu-btn"><a class="right-off-canvas-toggle menu-icon">Menu<span></span></a></li>
                             </ul>
                         </div>
                     </div>
                 </section>
             </nav>
             <!-- Main Content -->
+            <aside class="right-off-canvas-menu">
+                <ul class="main-pages">
+                    <li><a href="/" class="menu-icon">Home</a></li>
+                    <li><a href="sqlflow/doc/quickstart">Quick Start</a></li>
+                    <li><a href="sqlflow/">Documents</a></li>
+                    <li><a href="https://github.com/sql-machine-learning">Github</a></li>
+                </ul>
+            </aside>
+
             <section class="main-section">
                 <section id="home">
                     <section class="products text-center">
@@ -804,26 +958,29 @@
                                 
                                     <section class="feature">
                                         <h3>Easy to Learn</h3>
-                                        <p>Manipulate data and running AI with SQL</p>
-                                        
+
+                                        <!--
                                         <img alt="gif" src="assets/train.gif"/>
-                                        
+                                        -->
+                                        <p>Manipulate data and running AI with SQL</p>
                                     </section>
                                 
                                     <section class="feature">
                                         <h3>Work with Many Database Management Systems</h3>
-                                        <p>MySQL, Hive, Alibaba ODPS, Oracle and you name it!</p>
-                                        
+
+                                        <!--
                                         <img alt="gif" src="assets/select.gif"/>
-                                        
+                                        -->
+                                        <p>MySQL, Hive, Alibaba ODPS, Oracle and you name it!</p>
                                     </section>
                                 
                                     <section class="feature">
                                         <h3>Support Many Machine Learning Toolkits</h3>
-                                        <p>TensorFlow, PyTorch, xgboost, and more!</p>
-                                        
+
+                                        <!--
                                         <div class="gif-holder"></div>
-                                        
+                                        -->
+                                        <p>TensorFlow, PyTorch, xgboost, and more!</p>
                                     </section>
                                 
                             </div>
@@ -861,6 +1018,15 @@
     fadeOut: true,
     loop: true
   });
+</script>
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      var tgt = document.getElementsByClassName('off-canvas-wrap')[0];
+
+      tgt.classList.contains('move-left') ?
+        tgt.classList.remove('move-left') :
+        tgt.classList.add('move-left')
+    })
 </script>
 </body>
 

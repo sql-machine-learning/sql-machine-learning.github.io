@@ -1,3 +1,7 @@
+---
+nav_order: 1
+---
+
 # Quick start
 
 SQLFlow is currently under active development. For those who are interested in trying

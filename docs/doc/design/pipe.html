@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>About Us - Sqlflow</title>
+  <title>Piping Responses - Sqlflow</title>
   <link rel="stylesheet" href="http://localhost:4000/assets/css/just-the-docs.css">
 
   
@@ -73,7 +73,7 @@
     
       
         
-          <li class="navigation-list-item">
+          <li class="navigation-list-item active">
             
             <a href="http://localhost:4000/doc/design" class="navigation-list-link">Design</a>
             
@@ -133,9 +133,9 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
+                    <li class="navigation-list-item  active">
                       
-                      <a href="http://localhost:4000/doc/design/pipe.html" class="navigation-list-link">Piping Responses</a>
+                      <a href="http://localhost:4000/doc/design/pipe.html" class="navigation-list-link active">Piping Responses</a>
                       
                     </li>
                   
@@ -273,14 +273,103 @@
       <div class="main-content">
         
           
+            <nav class="breadcrumb-nav">
+              <ol class="breadcrumb-nav-list">
+                
+                  <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/doc/design">Design</a></li>
+                
+                <li class="breadcrumb-nav-list-item"><span>Piping Responses</span></li>
+              </ol>
+            </nav>
+          
         
         <div id="main-content" class="page-content" role="main">
-          <h1 id="about">About</h1>
-<p>Add info about the product.</p>
+          <h1 id="piping-responses">Piping Responses</h1>
 
-<p>Add info about the team.</p>
+<h2 id="streaming-responses">Streaming Responses</h2>
 
-<p>Add info about the contact.</p>
+<p>As described in the <a href="doc/design.md">overall design</a>, a SQLFlow job could be a standard or an extended SQL statemnt, where an extended SQL statement will be translated into a Python program.  Therefore, each job might generate up to the following data streams:</p>
+
+<ol>
+  <li>standard output, where each element is a line of text,</li>
+  <li>standard error, where each element is a line of text,</li>
+  <li>data rows, where the first element consists of fields name/types, and each of the rest is a row of data,</li>
+  <li>status, where the element could be <em>pending</em>, <em>failed</em>, and <em>succeeded</em>.</li>
+</ol>
+
+<p>To create good user experience, we need to pipe these responses from SQLFlow jobs to Jupyter Notebook in real-time.</p>
+
+<h2 id="stages-in-the-pipe">Stages in the Pipe</h2>
+
+<p>The pipe that streams outputs from SQLFlow jobs to the Jupyter Notebook consists of the following stages:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Web browser 
+ ↑
+ | HTTP
+ ↓
+Jupyter Notebook server
+ ↑
+ | ZeroMQ streams: Shell, IOPub, stdin, Controls, Heartbeat
+ ↓
+iPython kernel
+ ↑
+ | IPython magic command framework
+ ↓
+SQLFlow magic command for Jupyter
+ ↑
+ | gRPC
+ ↓
+SQLFlow server
+ ↑
+ | Go channels
+ ↓
+SQLFlow job manager (Go functions)
+ ↑
+ | IPC with Go's standard library
+ ↓ 
+SQLFlow jobs
+</code></pre></div></div>
+
+<p>In the above figure, from the SQLFlow magic command to the bottom layer are our work.</p>
+
+<h2 id="streaming">Streaming</h2>
+
+<p>We have two alternative ideas: multiple streams and a multiplexing stream.
+We decided to use a multiplexing stream because we had a unsuccessful trial with the multiple streams idea: we make the job writes to various Go channels and forward each Go channel to a streaming gRPC call, as the following:</p>
+
+<h3 id="multiple-streams">Multiple streams</h3>
+
+<p>The above figure shows that there are multiple streams between the Jupyter Notebook server and Jupyter kernels.  According to the <a href="https://jupyter-client.readthedocs.io/en/stable/messaging.html">document</a>, there are five: Shell, IOPub, stdin, Control, and Heartbeat.  These streams are ZeroMQ streams.  We don’t use ZeroMQ, but we can take the idea of having multiple parallel streams in the pipe.</p>
+
+<div class="language-protobuf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">service</span> <span class="n">SQLFlow</span> <span class="p">{</span>
+    <span class="k">rpc</span> <span class="n">File</span><span class="p">(</span><span class="kt">string</span> <span class="n">sql</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">rpc</span> <span class="n">ReadStdout</span><span class="p">(</span><span class="n">int</span> <span class="n">id</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">rpc</span> <span class="n">ReadStderr</span><span class="p">(</span><span class="n">int</span> <span class="n">id</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">rpc</span> <span class="n">ReadData</span><span class="p">(</span><span class="n">int</span> <span class="n">id</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="n">Row</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">rpc</span> <span class="n">ReadStatus</span><span class="p">(</span><span class="n">int</span> <span class="n">id</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="n">int</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>However, we realized that if the user doesn’t call any one of the <code class="highlighter-rouge">SQLFlow.Read...</code> call, there would be no forwarding from the Go channel to Jupyter, thus the job would block forever at writing.</p>
+
+<h2 id="a-multiplexing-stream">A Multiplexing Stream</h2>
+
+<p>Another idea is multiplexing all streams into one. For example, we can have only one ZeroMQ stream, where each element is a polymorphic type – could be a text string or a data row.</p>
+
+<div class="language-protobuf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">service</span> <span class="n">SQLFlow</span> <span class="p">{</span>
+    <span class="k">rpc</span> <span class="n">Run</span><span class="p">(</span><span class="kt">string</span> <span class="n">sql</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="n">Response</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// Only one of the following fields should be set.
+</span><span class="kd">message</span> <span class="nc">Response</span> <span class="p">{</span>
+    <span class="k">oneof</span> <span class="n">record</span> <span class="p">{</span>
+        <span class="k">repeated</span> <span class="kt">string</span> <span class="na">head</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>             <span class="c1">// Column names.
+</span>        <span class="k">repeated</span> <span class="n">google.protobuf.Any</span> <span class="na">row</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// Cells in a row.
+</span>        <span class="kt">string</span> <span class="na">log</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>                       <span class="c1">// A line from stderr or stdout.
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 
 

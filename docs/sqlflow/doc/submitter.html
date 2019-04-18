@@ -354,7 +354,7 @@ a {color: #1BA2FF}
 
 <p>When a user types in an extended SQL statement, SQLFlow first parses and semantically verifies the statement. Then SQLFlow either runs the ML job locally or submits the ML job to a third party computation service.</p>
 
-<p><img src="doc/figures/sqlflow-arch2.png" alt="" /></p>
+<p><img src="/sqlflow/doc/figures/sqlflow-arch2.png" alt="" /></p>
 
 <p>In the latter case, SQLFlow produces a job description (<code class="highlighter-rouge">TrainDescription</code> or <code class="highlighter-rouge">PredictDescription</code>) and hands it over to the submitter. For a training SQL, SQLFlow produces <code class="highlighter-rouge">TrainDescription</code>; for prediction SQL, SQLFlow produces <code class="highlighter-rouge">PredDescription</code>. The concrete definition of the description looks like the following</p>
 

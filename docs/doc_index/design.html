@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>SQLFlow - SQLFLOW</title>
+  <title>Design - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -111,9 +111,9 @@
     
       
         
-          <li class="navigation-list-item">
+          <li class="navigation-list-item active">
             
-            <a href="/doc_index/design.html" class="navigation-list-link">Design</a>
+            <a href="/doc_index/design.html" class="navigation-list-link active">Design</a>
             
               
               <ul class="navigation-list-child-list ">
@@ -337,23 +337,101 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="sqlflow">SQLFlow</h1>
+<h1 id="design">Design</h1>
 
-<h2 id="build-run-test">Build, Run, Test</h2>
-
-<p>Before running the unit tests, we need to build and run a Docker container that
-hosts a MySQL database following <a href="/sqlflow/sqlflow/example/datasets/">this guide</a>.</p>
-
-<p>To build the parser using <code class="highlighter-rouge">goyacc</code> and run all unit tests, use the following
-command:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go get <span class="nt">-d</span> ./... <span class="o">&amp;&amp;</span> goyacc <span class="nt">-p</span> sql <span class="nt">-o</span> parser.go sql.y <span class="o">&amp;&amp;</span> go <span class="nb">test</span> <span class="nt">-v</span>
-</code></pre></div></div>
+<p>How we design SQLFLow</p>
 
 
 
 
 
+          
+          <hr>
+          <h2 class="text-delta">Table of contents</h2>
+          
+          <ul>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/database_abstraction_layer.html">Compatibility with Various SQL Engines</a>
+              </li>
+              
+            
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/pipe.html">Piping Responses</a>
+              </li>
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/sql_parser.html">Extended SQL Parser Design</a>
+              </li>
+              
+            
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/syntax.html">SQLFlow: Design Doc</a>
+              </li>
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/walkthrough.html">SQLFlow: Code Walkthrough</a>
+              </li>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </ul>
           
         </div>
       </div>

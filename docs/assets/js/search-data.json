@@ -10,14 +10,14 @@
     "id": "1",
     "title": "Contribute",
     "content": "Contribute Dev, build and run!",
-    "url": "/doc_index/contribute.html",
+    "url": "/sql-machine-learning.github.io/doc_index/contribute.html",
     "relUrl": "/doc_index/contribute.html"
   },
   "2": {
     "id": "2",
     "title": "Design",
     "content": "Design How we design SQLFLow",
-    "url": "/doc_index/design.html",
+    "url": "/sql-machine-learning.github.io/doc_index/design.html",
     "relUrl": "/doc_index/design.html"
   },
   "3": {

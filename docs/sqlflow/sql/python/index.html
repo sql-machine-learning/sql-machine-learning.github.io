@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  
+
+  <title>Python Code Template - SQLFLOW</title>
+  <link rel="stylesheet" href="/assets/css/just-the-docs.css">
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-17331483-8', '');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="page-wrap">
+    <div class="side-bar">
+      <a href="" class="site-title fs-6 lh-tight">SQLFLOW</a>
+      <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      <div class="navigation main-nav js-main-nav">
+        <nav role="navigation" aria-label="Main navigation">
+  <ul class="navigation-list">
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/sqlflow/doc/quickstart.html" class="navigation-list-link">Quick start</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc_index/design.html" class="navigation-list-link">Design</a>
+            
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/database_abstraction_layer.html" class="navigation-list-link">Compatibility with Various SQL Engines</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/pipe.html" class="navigation-list-link">Piping Responses</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/sql_parser.html" class="navigation-list-link">Extended SQL Parser Design</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/syntax.html" class="navigation-list-link">SQLFlow: Design Doc</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/walkthrough.html" class="navigation-list-link">SQLFlow: Code Walkthrough</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="/doc_index/contribute.html" class="navigation-list-link">Contribute</a>
+            
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/build-tensorflow.html" class="navigation-list-link">Build TensorFlow from Source Code using Docker</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/build.html" class="navigation-list-link">Canonical Development Environment</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/close_producer_from_consumer.html" class="navigation-list-link">Closing the producer goroutine from the consumer</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/mysql-setup.html" class="navigation-list-link">Run MySQL Server and Client in Docker Containers</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="/sqlflow/doc/submitter.html" class="navigation-list-link">Submitter</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+  </ul>
+</nav>
+
+      </div>
+      <footer role="contentinfo" class="site-footer">
+        <p class="text-small text-grey-dk-000 mb-0">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
+      </footer>
+    </div>
+    <div class="main-content-wrap js-main-content" tabindex="0">
+      <div class="page-header">
+        <div class="main-content">
+          
+          <div class="search js-search">
+            <div class="search-input-wrap">
+              <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search SQLFLOW" aria-label="Search SQLFLOW" autocomplete="off">
+              <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg>
+            </div>
+            <div class="js-search-results search-results-wrap"></div>
+          </div>
+          
+          
+            <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
+              
+                <li class="d-inline-block my-0"><a href="https://github.com/sql-machine-learning/sqlflow">GitHub</a></li>
+              
+            </ul>
+          
+        </div>
+      </div>
+      <div class="main-content">
+        
+          
+        
+        <div id="main-content" class="page-content" role="main">
+          <script>
+    document.getElementsByClassName('site-title')[0].innerHTML = "<img src='/assets/sqlflow-logo.svg' style='height: 30px' />"
+</script>
+
+<style>
+a {color: #1BA2FF}
+</style>
+
+<h1 id="python-code-template">Python Code Template</h1>
+
+<p>To run a test, say, <code class="highlighter-rouge">test_sql_data.py</code>, we need to</p>
+
+<ol>
+  <li>
+    <p>Start a container that runs MySQL server with populated data following <a href="https://github.com/sql-machine-learning/sqlflow/blob/develop/sqlflow/example/datasets/README.md">this guide</a>.</p>
+  </li>
+  <li>
+    <p>Run the tests in a SQLFlow container that has TensorFlow and <code class="highlighter-rouge">mysql_connector</code> installed:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">--network</span><span class="o">=</span><span class="s2">"host"</span> <span class="nt">-v</span> <span class="nv">$PWD</span>:/work <span class="nt">-w</span> /work sqlflow/sqlflow python test_sql_data.py
+</code></pre></div>    </div>
+
+    <p>where <code class="highlighter-rouge">--network="host"</code> allows processes running in the container to access the host’s network, where the MySQL server container exposes its port.</p>
+  </li>
+</ol>
+
+
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

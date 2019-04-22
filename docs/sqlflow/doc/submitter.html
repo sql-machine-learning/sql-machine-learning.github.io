@@ -48,8 +48,6 @@
       
     
       
-        
-      
     
       
         
@@ -85,6 +83,12 @@
     
       
         
+      
+    
+      
+        
+      
+    
       
     
       
@@ -103,7 +107,7 @@
         
           <li class="navigation-list-item">
             
-            <a href="/sqlflow/doc/quickstart.html" class="navigation-list-link">Quick start</a>
+            <a href="/sqlflow/doc/quickstart.html" class="navigation-list-link">Quick Start</a>
             
           </li>
         
@@ -117,6 +121,8 @@
             
               
               <ul class="navigation-list-child-list ">
+                
+                  
                 
                   
                 
@@ -196,6 +202,8 @@
                 
                   
                 
+                  
+                
               </ul>
             
           </li>
@@ -210,6 +218,8 @@
             
               
               <ul class="navigation-list-child-list ">
+                
+                  
                 
                   
                 
@@ -265,6 +275,8 @@
                       <a href="/sqlflow/doc/submitter.html" class="navigation-list-link active">Submitter</a>
                       
                     </li>
+                  
+                
                   
                 
                   
@@ -375,9 +387,9 @@ a {color: #1BA2FF}
 </span><span class="k">type</span><span class="x"> </span><span class="n">TrainDescription</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
     </span><span class="n">StandardSelect</span><span class="x"> </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. SELECT * FROM iris.train</span><span class="x">
     </span><span class="n">Estimator</span><span class="x">      </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. DNNClassifier</span><span class="x">
-    </span><span class="n">Attrs</span><span class="x">          </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. {{"n_classes", "3"}, {"hidden_units", "[10, 20]"}}</span><span class="x">
-    </span><span class="n">X</span><span class="x">              </span><span class="p">[]</span><span class="n">ColumnType</span><span class="x"> </span><span class="c">// e.g. {{"sepal_length", "FLOAT"}, ...}</span><span class="x">
-    </span><span class="n">Y</span><span class="x">              </span><span class="n">ColumnType</span><span class="x">   </span><span class="c">// e.g. {"class", "INT"}</span><span class="x">
+    </span><span class="n">Attrs</span><span class="x">          </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. "n_classes": "3", "hidden_units": "[10, 20]"</span><span class="x">
+    </span><span class="n">X</span><span class="x">              </span><span class="p">[]</span><span class="n">ColumnType</span><span class="x"> </span><span class="c">// e.g. "sepal_length": "FLOAT", ...</span><span class="x">
+    </span><span class="n">Y</span><span class="x">              </span><span class="n">ColumnType</span><span class="x">   </span><span class="c">// e.g. "class": "INT"</span><span class="x">
     </span><span class="n">ModelName</span><span class="x">      </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. my_dnn_model</span><span class="x">
 </span><span class="p">}</span><span class="x">
 

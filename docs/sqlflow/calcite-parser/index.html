@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>SQLFlow: Code Walkthrough - SQLFLOW</title>
+  <title>CalciteParser gRPC Server for SQLFlow - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -115,7 +115,7 @@
     
       
         
-          <li class="navigation-list-item active">
+          <li class="navigation-list-item">
             
             <a href="/doc_index/design.html" class="navigation-list-link">Design</a>
             
@@ -177,9 +177,9 @@
                   
                 
                   
-                    <li class="navigation-list-item  active">
+                    <li class="navigation-list-item ">
                       
-                      <a href="/sqlflow/doc/walkthrough.html" class="navigation-list-link active">SQLFlow: Code Walkthrough</a>
+                      <a href="/sqlflow/doc/walkthrough.html" class="navigation-list-link">SQLFlow: Code Walkthrough</a>
                       
                     </li>
                   
@@ -339,15 +339,6 @@
       <div class="main-content">
         
           
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                
-                  <li class="breadcrumb-nav-list-item"><a href="/doc_index/design.html">Design</a></li>
-                
-                <li class="breadcrumb-nav-list-item"><span>SQLFlow: Code Walkthrough</span></li>
-              </ol>
-            </nav>
-          
         
         <div id="main-content" class="page-content" role="main">
           <script>
@@ -358,80 +349,38 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="sqlflow-code-walkthrough">SQLFlow: Code Walkthrough</h1>
+<h1 id="calciteparser-grpc-server-for-sqlflow">CalciteParser gRPC Server for SQLFlow</h1>
 
-<h2 id="user-experience">User Experience</h2>
+<h2 id="how-to-build">How to Build</h2>
 
-<p>SQLFlow allows users to write SQL programs with extended syntax in Jupyter Notebook or a command-line tool.</p>
+<p>The following build process doesn’t require us to install Java SDK, Maven, protobuf-compiler, and any dependencies.  Instead, it installs all such staff into a Docker image and use the Docker image as the build toolchain.  Building in Docker containers standardizes development environments of all contributors, keeps our host computer clean, and works on macOS, Linux, BSD, Windows, and all platforms that have Docker.</p>
 
-<p>The following SQL statements train a TensorFlow model named <code class="highlighter-rouge">DNNClassifier</code>, which is a Python class derived from <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator"><code class="highlighter-rouge">tf.estimator.Estimator</code></a>:</p>
+<p>Build the development Docker image:</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">a_table</span> <span class="n">TRAIN</span> <span class="n">DNNClassifier</span> <span class="k">WITH</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="k">INTO</span> <span class="n">sqlflow_models</span><span class="p">.</span><span class="n">my_model</span><span class="p">;</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> calcite:dev <span class="nb">.</span>
 </code></pre></div></div>
 
-<p>And the following statement uses the trained model for prediction.</p>
+<p>Or, if it takes too long time for you to build the image, please feel free to use mine:</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">b_table</span> <span class="n">PREDICT</span> <span class="n">b_table</span><span class="p">.</span><span class="n">predicted_label</span> <span class="k">USING</span> <span class="n">sqlflow_models</span><span class="p">.</span><span class="n">my_model</span><span class="p">;</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull cxwangyi/calcite:dev
+docker tag cxwangyi/calcite:dev calcite:dev
 </code></pre></div></div>
 
-<p>Please be aware that the part in the above statements before the extended keyword TRAIN and PREDICT is a standard SQL statement. This feature simplifies the implementation of the SQLFlow system.</p>
+<p>Generate Java source code from protobuf messages:</p>
 
-<h2 id="system-implementation">System Implementation</h2>
-
-<p>If a SQL statement is of the standard syntax, SQLFlow throws it to the SQL engine and redirects the output to the user; otherwise, SQLFlow translates the statement of extended syntax into a Python program.  Currently, it generates a program that throws the standard-syntax part of SELECT to MySQL, reads the results in the train-loop of a TensorFlow program.  We will talk about how to extend SQLFlow to connect more SQL engines like Oracle, Hive, and SparkSQL, and generates more types of machine learning programs that calls distributed TensorFlow, PyTorch, and xgboost later. Before that, let us explain the system components.</p>
-
-<h3 id="sqlflow-as-a-grpc-server">SQLFlow as a gRPC Server</h3>
-
-<p>SQLFlow is a gRPC server, which can connect with multiple clients.  A typical client is <a href="https://github.com/sql-machine-learning/pysqlflow">pysqlflow</a>, the SQLFlow plugin for Jupyter Notebook server.  Another once is a text-based client <a href="/cmd/sqlflowserver/main.go">/cmd/sqlflowserver/main.go</a>.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Jupyter Notebook          ---(SQL statements)--&gt;       SQLFlow gRPC server
-(SQLFlow magic command)   &lt;--(a stream of messages)--
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> <span class="nv">$PWD</span>:/work <span class="nt">-w</span> /work calcite:dev protoc <span class="nt">--java_out</span><span class="o">=</span><span class="nb">.</span> CalciteParser.proto
+ docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> <span class="nv">$PWD</span>:/work <span class="nt">-w</span> /work calcite:dev protoc <span class="nt">--grpc-java_out</span><span class="o">=</span><span class="nb">.</span> CalciteParser.proto
 </code></pre></div></div>
 
-<p>The protobuf definition of the gRPC service is at <a href="/server/proto/sqlflow.proto">/server/proto/sqlflow.proto</a>.  The return of the method <code class="highlighter-rouge">SQLFlow.Run</code> is a stream of <code class="highlighter-rouge">Reponse</code>s, where each represents either a table header, a row, or a log message.  The header and rows are usually from a standard SQL statement, for example, SELECT or DESCRIBE, and the log messages are usually from the running of a generated Python program.</p>
+<p>Build and generate <code class="highlighter-rouge">.class</code> files:</p>
 
-<h3 id="sqlflow-in-the-grpc-server">SQLFlow in the gRPC Server</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> <span class="nv">$PWD</span>:/work <span class="nt">-w</span> /work calcite:dev javac <span class="k">*</span>.java
+</code></pre></div></div>
 
-<p>Once the SQLFlow server receives a batch of SQL statements via a gRPC call, it runs the following steps for each statement:</p>
+<p>All, actually, we can do all above in a single command:</p>
 
-<ol>
-  <li>the <a href="/sql/sql.y">parser</a> to generate parsing result,</li>
-  <li>the <a href="/sql/verifier.go">verifier</a> to verify the semantics given the parsing result,</li>
-  <li>the <a href="/sql/codegen.go">code generator</a> to generate a Python program, or the <em>submitter</em>, from the parsing result,</li>
-  <li>the <a href="/sql/executor.go">executor</a> that runs the submitter locally.</li>
-</ol>
-
-<p>Step 3. and 4. are only for a SQL statement of extended syntax; otherwise, SQLFlow server proxies the standard-syntax statement to the SQL engine.</p>
-
-<p>The executor calls Go’s <a href="https://godoc.org/os/exec">standard package</a> that captures the stdout and stderr from the submitter process and passing the result back to the gRPC client.  Therefore, it is the responsibility of the submitter to print log messages to its stderr and stdout.</p>
-
-<h3 id="minimal-viable-product">Minimal Viable Product</h3>
-
-<p>In the minimal viable product (MVP) of SQLFlow, the code generator generates a Python program consists of two parts:</p>
-
-<ol>
-  <li>throw the standard SELECT part in the extended-syntax statement to MySQL via ODBC, and</li>
-  <li>a loop that reads outputs from the run of the SELECT statement and trains the model (or, using a trained model to predict).</li>
-</ol>
-
-<p>The training part calls TensorFlow to update the parameters of the model specified in the TRAIN clause.</p>
-
-<h3 id="extensibility">Extensibility</h3>
-
-<p>By writing more code generators, we could extend SQLFlow to support more SQL engines, e.g., Hive and Oracle, and use machine learning toolkits, e.g., PyTorch and xgboost, in addition to TensorFlow, on various computing platforms.  You are welcome to add more code generators such as</p>
-
-<ul>
-  <li><code class="highlighter-rouge">codegen_distributed_tf.go</code> to generate a submitter program similar to the MVP but runs a distributed TensorFlow training job.</li>
-  <li><code class="highlighter-rouge">codegen_kubernetes_tf.go</code> to launch a distributed TensorFlow job on a Kubernetes cluster, other than running locally, in the same container as where SQLFlow gRPC server resides.</li>
-  <li><code class="highlighter-rouge">codegen_gcloud_pytorch.go</code> to launch a submitter that calls PyTorch instead of TensorFlow for training on the Google Cloud.</li>
-</ul>
-
-<h3 id="job-management">Job Management</h3>
-
-<p>The current design of the gRPC interface assumes that the connection between the client, e.g., the Jupyter Notebook, and the SQLFlow server keeps alive during the running of the training program.  This assumption is reasonable because even if the user closes her/his Web browser and disconnect to the Jupyter Notebook server, the connection between Jupyter to SQLFlow server might keep alive.  However, this might not be robust enough if the Jupyter Notebook server runs on a user’s laptop and gets killed.  In such a case, the gRPC server cannot stream the messages back to the client and would cause the failure of the submitter.</p>
-
-<p>A solution is to change the gRPC interface of SQLFlow server to have a method that files a job and returns immediately, and another method to get a batch of recent messages given a job ID.  We will make a design for that soon.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> <span class="nv">$PWD</span>:/work <span class="nt">-w</span> /work calcite:dev bash ./build_and_test.bash
+</code></pre></div></div>
 
 
 

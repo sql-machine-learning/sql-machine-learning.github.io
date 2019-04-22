@@ -13,6 +13,9 @@
 <loc>/</loc>
 </url>
 <url>
+<loc>/sqlflow/doc/alps_submitter.html</loc>
+</url>
+<url>
 <loc>/sqlflow/doc/build-tensorflow.html</loc>
 </url>
 <url>
@@ -47,6 +50,9 @@
 </url>
 <url>
 <loc>/sqlflow/</loc>
+</url>
+<url>
+<loc>/sqlflow/calcite-parser/</loc>
 </url>
 <url>
 <loc>/sqlflow/cmd/demo/</loc>

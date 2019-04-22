@@ -2,11 +2,9 @@ remote_theme: pmarsceill/just-the-docs
 
 classes: wide
 
-include: ["pages", "doc"]
-
 search_enabled: true
 
-title: 'Sqlflow'
+title: 'SQLFLOW'
 
 destination: 'docs'
 
@@ -16,7 +14,72 @@ aux_links:
   "GitHub":
     - "https://github.com/sql-machine-learning/sqlflow"
 
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
+
 # baseurl: "/sql-machine-learning.github.io/"
+
+defaults:
+  - scope:
+      path: "sqlflow"
+    values:
+      layout: "doc"
+      nav_exclude: true
+  - scope:
+      path: "sqlflow/doc/quickstart.md"
+    values:
+      nav_exclude: false
+      nav_order: 1
+  - scope:
+      path: "sqlflow/doc/syntax.md"
+    values:
+      nav_exclude: false
+      parent: Design
+  - scope:
+      path: "sqlflow/doc/walkthrough.md"
+    values:
+      nav_exclude: false
+      parent: Design
+  - scope:
+      path: "sqlflow/doc/sql_parser.md"
+    values:
+      nav_exclude: false
+      parent: Design
+  - scope:
+      path: "sqlflow/doc/database_abstraction_layer.md"
+    values:
+      nav_exclude: false
+      parent: Design
+  - scope:
+      path: "sqlflow/doc/pipe.md"
+    values:
+      nav_exclude: false
+      parent: Design
+  - scope:
+      path: "sqlflow/doc/build.md"
+    values:
+      nav_exclude: false
+      parent: Contribute
+  - scope:
+      path: "sqlflow/doc/build-tensorflow.md"
+    values:
+      nav_exclude: false
+      parent: Contribute
+  - scope:
+      path: "sqlflow/doc/mysql-setup.md"
+    values:
+      nav_exclude: false
+      parent: Contribute
+  - scope:
+      path: "sqlflow/doc/close_producer_from_consumer.md"
+    values:
+      nav_exclude: false
+      parent: Contribute
+  - scope:
+      path: "sqlflow/doc/submitter.md"
+    values:
+      nav_exclude: false
+      parent: Contribute
+
 
 footer:
   links:

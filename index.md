@@ -9,8 +9,10 @@ intro: "Currently support MySQL and TensorFlow. Expanding to Apache Hive, Alibab
 features: 
   - title: 'Easy to Learn'
     content: 'Manipulate data and running AI with SQL'
+    gif: 'assets/train.gif'
   - title: 'Work with Many Database Management Systems'
     content: 'MySQL, Hive, Alibaba ODPS, Oracle and you name it!'
+    gif: 'assets/select.gif'
   - title: 'Support Many Machine Learning Toolkits'
     content: 'TensorFlow, PyTorch, xgboost, and more!'
 ---

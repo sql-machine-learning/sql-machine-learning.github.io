@@ -11,6 +11,7 @@ When a user types in an extended SQL statement, SQLFlow first parses and semanti
 In the latter case, SQLFlow produces a job description (`TrainDescription` or `PredictDescription`) and hands it over to the submitter. For a training SQL, SQLFlow produces `TrainDescription`; for prediction SQL, SQLFlow produces `PredDescription`. The concrete definition of the description looks like the following
 
 {% raw %}
+
 ```go
 type ColumnType struct {
     Name             string // e.g. sepal_length
@@ -29,9 +30,9 @@ type ColumnType struct {
 type TrainDescription struct {
     StandardSelect string       // e.g. SELECT * FROM iris.train
     Estimator      string       // e.g. DNNClassifier
-    Attrs          map[string]string // e.g. {{"n_classes", "3"}, {"hidden_units", "[10, 20]"}}
-    X              []ColumnType // e.g. {{"sepal_length", "FLOAT"}, ...}
-    Y              ColumnType   // e.g. {"class", "INT"}
+    Attrs          map[string]string // e.g. "n_classes": "3", "hidden_units": "[10, 20]"
+    X              []ColumnType // e.g. "sepal_length": "FLOAT", ...
+    Y              ColumnType   // e.g. "class": "INT"
     ModelName      string       // e.g. my_dnn_model
 }
 
@@ -45,9 +46,7 @@ type PredDescription struct {
     ModelName      string // e.g. my_dnn_model
 }
 ```
-
 {% endraw %}
-
 ## Submitter Interface
 
 The submitter interface should provide two functions `Train` and `Predict`. The detailed definition can be the following

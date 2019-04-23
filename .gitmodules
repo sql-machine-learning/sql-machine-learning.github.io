@@ -1,3 +1,4 @@
 [submodule "sqlflow"]
 	path = sqlflow
 	url = https://github.com/sql-machine-learning/sqlflow
+	branch = develop

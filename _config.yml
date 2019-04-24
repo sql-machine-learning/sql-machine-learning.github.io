@@ -26,7 +26,7 @@ defaults:
       nav_exclude: true
       grand_parent: Document
   - scope:
-      path: "sqlflow/doc/quickstart.md"
+      path: "sqlflow/doc/installation.md"
     values:
       nav_exclude: false
       parent: Document

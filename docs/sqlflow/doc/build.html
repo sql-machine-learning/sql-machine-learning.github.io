@@ -50,6 +50,24 @@
       
     
       
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
     
       
         
@@ -75,20 +93,6 @@
         
       
     
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
       
     
       
@@ -141,11 +145,7 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
-                      
-                      <a href="/sqlflow/doc/quickstart.html" class="navigation-list-link">Quick Start</a>
-                      
-                    </li>
+                
                   
                 
                   
@@ -175,11 +175,13 @@
                             
                           
                             
-                          
-                            
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/database_abstraction_layer.html" class="navigation-list-link">Compatibility with Various SQL Engines</a>
                               </li>
+                            
+                          
+                            
+                          
                             
                           
                             
@@ -246,8 +248,6 @@
                             
                           
                             
-                          
-                            
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/build-tensorflow.html" class="navigation-list-link">Build TensorFlow from Source Code using Docker</a>
                               </li>
@@ -263,6 +263,10 @@
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/close_producer_from_consumer.html" class="navigation-list-link">Closing the producer goroutine from the consumer</a>
                               </li>
+                            
+                          
+                            
+                          
                             
                           
                             
@@ -305,10 +309,6 @@
               </ul>
             
           </li>
-        
-      
-    
-      
         
       
     
@@ -432,6 +432,9 @@ To build the Docker image:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> sqlflow:dev <span class="nt">-f</span> Dockerfile.dev <span class="nb">.</span>
 </code></pre></div></div>
+
+<p>You can also pull the latest development Docker image from DockerHub by running the command
+<code class="highlighter-rouge">docker pull sqlflow/sqlflow:dev</code> and give it an alias <code class="highlighter-rouge">docker tag sqlflow/sqlflow:dev sqlflow:dev</code>.</p>
 
 <h2 id="development">Development</h2>
 

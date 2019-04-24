@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>The MySQL Server Container for Testing - SQLFLOW</title>
+  <title>Building and running MySQL server 8.0 - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -50,6 +50,24 @@
       
     
       
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
     
       
         
@@ -75,20 +93,6 @@
         
       
     
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
       
     
       
@@ -141,11 +145,7 @@
                   
                 
                   
-                    <li class="navigation-list-item ">
-                      
-                      <a href="/sqlflow/doc/quickstart.html" class="navigation-list-link">Quick Start</a>
-                      
-                    </li>
+                
                   
                 
                   
@@ -175,11 +175,13 @@
                             
                           
                             
-                          
-                            
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/database_abstraction_layer.html" class="navigation-list-link">Compatibility with Various SQL Engines</a>
                               </li>
+                            
+                          
+                            
+                          
                             
                           
                             
@@ -246,8 +248,6 @@
                             
                           
                             
-                          
-                            
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/build-tensorflow.html" class="navigation-list-link">Build TensorFlow from Source Code using Docker</a>
                               </li>
@@ -263,6 +263,10 @@
                               <li class="navigation-list-item ">
                                 <a href="/sqlflow/doc/close_producer_from_consumer.html" class="navigation-list-link">Closing the producer goroutine from the consumer</a>
                               </li>
+                            
+                          
+                            
+                          
                             
                           
                             
@@ -316,10 +320,6 @@
         
       
     
-      
-        
-      
-    
   </ul>
 </nav>
 
@@ -362,9 +362,9 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="the-mysql-server-container-for-testing">The MySQL Server Container for Testing</h1>
+<h1 id="building-and-running-mysql-server-80">Building and running MySQL server 8.0</h1>
 
-<p>This directory contains a Dockerfile that builds a Docker image derived the MySQL Server 8.0 image, and includes SQL programs that popularize the following datasets:</p>
+<p>This directory contains a Dockerfile that builds a Docker image derived the MySQL Server 8.0 image. It includes SQL programs that popularize the following datasets:</p>
 
 <ol>
   <li><a href="https://www.kaggle.com/blastchar/telco-customer-churn">Churn from Kaggle</a></li>
@@ -373,13 +373,13 @@ a {color: #1BA2FF}
 
 <p>We can run a Docker container of it for unit testing.</p>
 
-<h2 id="build">Build</h2>
+<h2 id="build-sqlflow-image">Build SQLFlow image</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>example/datasets
 docker build <span class="nt">-t</span> sqlflow:data <span class="nb">.</span>
 </code></pre></div></div>
 
-<h2 id="run">Run</h2>
+<h2 id="run-sqlflow-docker-image">Run SQLFlow docker image</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-d</span> <span class="nt">--name</span> sqlflowdata <span class="se">\</span>
    <span class="nt">-p</span> 3306:3306 <span class="se">\</span>
@@ -388,9 +388,9 @@ docker build <span class="nt">-t</span> sqlflow:data <span class="nb">.</span>
    sqlflow:data
 </code></pre></div></div>
 
-<h2 id="popularize-datasets">Popularize Datasets</h2>
+<h2 id="popularize-datasets-to-mysql">Popularize Datasets to MySQL</h2>
 
-<p>We need to manually popularize the databases and tables:</p>
+<p>Popularize the databases and tables with commands below:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-it</span> sqlflowdata bash
 </code></pre></div></div>
@@ -410,20 +410,19 @@ docker build <span class="nt">-t</span> sqlflow:data <span class="nb">.</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"CREATE DATABASE IF NOT EXISTS sqlflow_models;"</span> | mysql <span class="nt">-uroot</span> <span class="nt">-proot</span>
 </code></pre></div></div>
 
-<h2 id="query">Query</h2>
+<h2 id="try-your-first-query-in-the-container">Try your first Query in the container</h2>
 
-<p>In the container, run</p>
+<p>In the container, run below command to test if tables exist.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"select count(*) from churn.test;"</span> | mysql <span class="nt">-uroot</span> <span class="nt">-proot</span>
 </code></pre></div></div>
 
-<p>should print the number of rows as the following</p>
+<p>It should print the number of rows as the following:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count(*)
 10
 </code></pre></div></div>
-
-<h2 id="trouble-shooting">Trouble shooting:</h2>
+<h2 id="trouble-shooting">Trouble Shooting</h2>
 
 <ol>
   <li>It usually takes about 15 seconds to bring up the MySQL Server. If you try to connect it
@@ -432,6 +431,8 @@ before that, you may see the following error</li>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
 </code></pre></div></div>
+
+<p>After commands executes successfully and data are popularized, go back to Installation page.</p>
 
 
 

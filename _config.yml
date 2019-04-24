@@ -24,10 +24,12 @@ defaults:
     values:
       layout: "doc"
       nav_exclude: true
+      grand_parent: Document
   - scope:
       path: "sqlflow/doc/quickstart.md"
     values:
       nav_exclude: false
+      parent: Document
       nav_order: 1
   - scope:
       path: "sqlflow/doc/syntax.md"

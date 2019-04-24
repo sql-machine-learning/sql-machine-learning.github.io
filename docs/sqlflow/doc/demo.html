@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>Design - SQLFLOW</title>
+  <title>Demo: Using SQLFlow from Command Line - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -149,9 +149,9 @@
                   
                 
                   
-                    <li class="navigation-list-item  active">
+                    <li class="navigation-list-item ">
                       
-                      <a href="/doc_index/design.html" class="navigation-list-link active">Design</a>
+                      <a href="/doc_index/design.html" class="navigation-list-link">Design</a>
                       
                         
                         <ul class="navigation-list-child-list">
@@ -352,15 +352,6 @@
       <div class="main-content">
         
           
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                
-                  <li class="breadcrumb-nav-list-item"><a href="/doc_index/doc.html">Document</a></li>
-                
-                <li class="breadcrumb-nav-list-item"><span>Design</span></li>
-              </ol>
-            </nav>
-          
         
         <div id="main-content" class="page-content" role="main">
           <script>
@@ -371,99 +362,65 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="design">Design</h1>
+<h2 id="demo-using-sqlflow-from-command-line">Demo: Using SQLFlow from Command Line</h2>
 
-<p>How we design SQLFLow</p>
+<p>Besides running SQLFlow from Notebook, we could also run it from command line. If you are using Docker for Linux, please change <code class="highlighter-rouge">host.docker.internal:3306</code> to <code class="highlighter-rouge">localhost:3306</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -it --rm --net=host sqlflow/sqlflow:latest demo \
+--db_user root --db_password root --db_address host.docker.internal:3306
+</code></pre></div></div>
+
+<p>You should be able to see the following:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlflow&gt;
+</code></pre></div></div>
+
+<h3 id="training-a-dnnclassifier-and-run-prediction">Training a DNNClassifier and run prediction</h3>
+
+<ul>
+  <li>Step one: Let’s see training data from Iris database:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlflow</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">iris</span><span class="p">.</span><span class="n">train</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span>
+<span class="c1">-----------------------------</span>
+<span class="o">+</span><span class="c1">--------------+-------------+--------------+-------------+-------+</span>
+<span class="o">|</span> <span class="n">SEPAL</span> <span class="k">LENGTH</span> <span class="o">|</span> <span class="n">SEPAL</span> <span class="n">WIDTH</span> <span class="o">|</span> <span class="n">PETAL</span> <span class="k">LENGTH</span> <span class="o">|</span> <span class="n">PETAL</span> <span class="n">WIDTH</span> <span class="o">|</span> <span class="k">CLASS</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------+-------------+--------------+-------------+-------+</span>
+<span class="o">|</span>          <span class="mi">6</span><span class="p">.</span><span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span><span class="p">.</span><span class="mi">8</span> <span class="o">|</span>          <span class="mi">5</span><span class="p">.</span><span class="mi">6</span> <span class="o">|</span>         <span class="mi">2</span><span class="p">.</span><span class="mi">2</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>
+<span class="o">|</span>            <span class="mi">5</span> <span class="o">|</span>         <span class="mi">2</span><span class="p">.</span><span class="mi">3</span> <span class="o">|</span>          <span class="mi">3</span><span class="p">.</span><span class="mi">3</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------+-------------+--------------+-------------+-------+</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Step Two: Train a Tensorflow <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier">DNNClassifier</a> from train table:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlflow</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">iris</span><span class="p">.</span><span class="n">train</span>
+<span class="n">TRAIN</span> <span class="n">DNNClassifier</span>
+<span class="k">WITH</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">hidden_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="k">COLUMN</span> <span class="n">sepal_length</span><span class="p">,</span> <span class="n">sepal_width</span><span class="p">,</span> <span class="n">petal_length</span><span class="p">,</span> <span class="n">petal_width</span>
+<span class="n">LABEL</span> <span class="k">class</span>
+<span class="k">INTO</span> <span class="n">sqlflow_models</span><span class="p">.</span><span class="n">my_dnn_model</span><span class="p">;</span>
+<span class="c1">-----------------------------</span>
+<span class="p">...</span>
+<span class="n">Training</span> <span class="k">set</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">96721</span>
+<span class="n">Done</span> <span class="n">training</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Step Three: Run prediction from a trained model:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlflow</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">iris</span><span class="p">.</span><span class="n">test</span>
+<span class="n">predict</span> <span class="n">iris</span><span class="p">.</span><span class="n">predict</span><span class="p">.</span><span class="k">class</span>
+<span class="k">USING</span> <span class="n">sqlflow_models</span><span class="p">.</span><span class="n">my_dnn_model</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Step Four: Checkout the prediction result:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlflow</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">iris</span><span class="p">.</span><span class="n">predict</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p>Now you have successfully run a demo in SQLFlow to train the model using DNNClassifier and make a simple prediction. More demos are on the road, please stay tuned.</p>
+  </li>
+</ul>
 
 
 
 
 
-          
-          <hr>
-          <h2 class="text-delta">Table of contents</h2>
-          
-          <ul>
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/database_abstraction_layer.html">Compatibility with Various SQL Engines</a>
-              </li>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/pipe.html">Piping Responses</a>
-              </li>
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/sql_parser.html">Extended SQL Parser Design</a>
-              </li>
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/syntax.html">SQLFlow: Design Doc</a>
-              </li>
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/walkthrough.html">SQLFlow: Code Walkthrough</a>
-              </li>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-          </ul>
           
         </div>
       </div>

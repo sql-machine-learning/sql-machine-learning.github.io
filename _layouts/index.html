@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{page.title}}</title>
-    <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>
+    <!--<script type="text/javascript" src="https://cdn.bootcss.com/typed.js/2.0.5/typed.js"></script>-->
     <style type="text/css">
         h2 {
             display: inline;
@@ -77,12 +77,10 @@
             -webkit-font-smoothing: antialiased;
             font-size: 0.85em;
             overflow: hidden;
-            background: #383737;
             color: #ccc;
             box-sizing: border-box;
             border-top: 1.5em solid #ccc;
             border-radius: 0.25em;
-            padding: 1.5em;
         }
         
         .sh-console.sh-shadow {
@@ -894,7 +892,7 @@
                                 <!-- <img src="sqlflow-logo-small.png" height="30"></img> -->
                                 <ul class="inline-list right">
                                     <li class="hide-for-small"><a href="sqlflow/doc/quickstart">Quick Start</a></li>
-                                    <li class="hide-for-small"><a href="sqlflow/">Documents</a></li>
+                                    <li class="hide-for-small"><a href="doc_index/doc.html">Documents</a></li>
                                     <li class="hide-for-small"><a href="https://github.com/sql-machine-learning">Github</a></li>
                                     <li class="off-canvas-nav-item" id="menu-btn"><a class="right-off-canvas-toggle menu-icon">Menu<span></span></a></li>
                                 </ul>
@@ -923,24 +921,25 @@
                                         <p class="require" id="firstrequire">{{page.intro}}</p>
                                     </div>
 
-                                    <div align=left class="sh-console sh-shadow" style="width:100%;height:500px;">
-                                        <div class="sh sh-command " name="select">
-                                            sqlflow>&nbsp;select * from <strong style='color:#3a92c8;'>iris.train</strong> limit 2;
-                                        </div>
-                                        <div class="sh" name="select-ret">
-                                            <pre>
-<code class="language-sql">
-+<span class="hljs-comment">--------------+-------------+--------------+-------------+-------+</span>
-| SEPAL LENGTH | SEPAL WIDTH | PETAL LENGTH | PETAL WIDTH | CLASS |
-+<span class="hljs-comment">--------------+-------------+--------------+-------------+-------+</span>
-|          6.4 |         2.8 |          5.6 |         2.2 |     2 |
-|            5 |         2.3 |          3.3 |           1 |     1 |
-+<span class="hljs-comment">--------------+-------------+--------------+-------------+-------+</span>
-</code>
-                      </pre>
-                                        </div>
-                                        <div class="sh sh-command " name="select">sqlflow>&nbsp;<span class="cmd"></span>
-                                        </div>
+                                    <div align=center class="sh-console sh-shadow" style="width: 800px;margin: 0 auto;">
+                                        <img src="assets/instruction.gif" alt="instruction"/>
+                                        <!--<div class="sh sh-command " name="select">-->
+                                            <!--sqlflow>&nbsp;select * from <strong style='color:#3a92c8;'>iris.train</strong> limit 2;-->
+                                        <!--</div>-->
+                                        <!--<div class="sh" name="select-ret">-->
+                                            <!--<pre>-->
+<!--<code class="language-sql">-->
+<!--+<span class="hljs-comment">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;+</span>-->
+<!--| SEPAL LENGTH | SEPAL WIDTH | PETAL LENGTH | PETAL WIDTH | CLASS |-->
+<!--+<span class="hljs-comment">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;+</span>-->
+<!--|          6.4 |         2.8 |          5.6 |         2.2 |     2 |-->
+<!--|            5 |         2.3 |          3.3 |           1 |     1 |-->
+<!--+<span class="hljs-comment">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;+-&#45;&#45;&#45;&#45;&#45;&#45;+</span>-->
+<!--</code>-->
+                      <!--</pre>-->
+                                        <!--</div>-->
+                                        <!--<div class="sh sh-command " name="select">sqlflow>&nbsp;<span class="cmd"></span>-->
+                                        <!--</div>-->
                                     </div>
                                     {% for feat in page.features %}
                                     <section class="feature">
@@ -978,18 +977,18 @@
         ga('create', 'UA-17331483-8', 'auto');
         ga('send', 'pageview');
     </script>
-    <script type="text/javascript">
-        var typed = new Typed('.cmd', {
-            strings: [
-                "SELECT * FROM  <strong style='color:#3a92c8;'>iris.train</strong> <br />>&nbsp;<strong style='color:#3a92c8;'>TRAIN</strong> DNNClassifier <br />>&nbsp;<strong style='color:#3a92c8;'>COLUMN</strong> sepal_length, sepal_width, petal_length, petal_width <br />>&nbsp;<strong style='color:#3a92c8;'>LABEL</strong> class <br />>&nbsp;<strong style='color:#3a92c8;'>INTO</strong> my_dnn_model;<br />^1000\n `<br />training `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `<br />Training set accuracy: 0.96721 `^1000\n `<br /> <strong style='color:#3f6;'>Done training !</strong> `^3000\n `&nbsp;`",
-                "SELECT * FROM  <strong style='color:#3a92c8;'>iris.test</strong> <br />>&nbsp;<strong style='color:#3a92c8;'>predict</strong> iris.predict.class <br />>&nbsp;<strong style='color:#3a92c8;'>USING</strong> my_dnn_model ;<br />^1000\n `<br />predicting `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `<br /> <strong style='color:#3f6;'>Done Predict !</strong> `^3000\n `&nbsp;`",
-            ],
-            typeSpeed: 0,
-            backSpeed: 0,
-            fadeOut: true,
-            loop: true
-        });
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--var typed = new Typed('.cmd', {-->
+            <!--strings: [-->
+                <!--"SELECT * FROM  <strong style='color:#3a92c8;'>iris.train</strong> <br />>&nbsp;<strong style='color:#3a92c8;'>TRAIN</strong> DNNClassifier <br />>&nbsp;<strong style='color:#3a92c8;'>COLUMN</strong> sepal_length, sepal_width, petal_length, petal_width <br />>&nbsp;<strong style='color:#3a92c8;'>LABEL</strong> class <br />>&nbsp;<strong style='color:#3a92c8;'>INTO</strong> my_dnn_model;<br />^1000\n `<br />training `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `<br />Training set accuracy: 0.96721 `^1000\n `<br /> <strong style='color:#3f6;'>Done training !</strong> `^3000\n `&nbsp;`",-->
+                <!--"SELECT * FROM  <strong style='color:#3a92c8;'>iris.test</strong> <br />>&nbsp;<strong style='color:#3a92c8;'>predict</strong> iris.predict.class <br />>&nbsp;<strong style='color:#3a92c8;'>USING</strong> my_dnn_model ;<br />^1000\n `<br />predicting `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `. `^1000\n `<br /> <strong style='color:#3f6;'>Done Predict !</strong> `^3000\n `&nbsp;`",-->
+            <!--],-->
+            <!--typeSpeed: 0,-->
+            <!--backSpeed: 0,-->
+            <!--fadeOut: true,-->
+            <!--loop: true-->
+        <!--});-->
+    <!--</script>-->
     <script>
         document.getElementById('menu-btn').addEventListener('click', function() {
             var tgt = document.getElementsByClassName('off-canvas-wrap')[0];

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>Design - SQLFLOW</title>
+  <title>Installation - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -149,9 +149,9 @@
                   
                 
                   
-                    <li class="navigation-list-item  active">
+                    <li class="navigation-list-item ">
                       
-                      <a href="/doc_index/design.html" class="navigation-list-link active">Design</a>
+                      <a href="/doc_index/design.html" class="navigation-list-link">Design</a>
                       
                         
                         <ul class="navigation-list-child-list">
@@ -352,15 +352,6 @@
       <div class="main-content">
         
           
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                
-                  <li class="breadcrumb-nav-list-item"><a href="/doc_index/doc.html">Document</a></li>
-                
-                <li class="breadcrumb-nav-list-item"><span>Design</span></li>
-              </ol>
-            </nav>
-          
         
         <div id="main-content" class="page-content" role="main">
           <script>
@@ -371,99 +362,56 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="design">Design</h1>
+<h1 id="installation">Installation</h1>
 
-<p>How we design SQLFLow</p>
+<p>SQLFlow is currently under active development. For those who are interested in trying
+it out, we have provided the instructions and demo. Play around with it. Any bug report and
+issue is welcome. :)</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<ol>
+  <li>Install <a href="https://docs.docker.com/install/">Docker Community Edition</a> on your Macbook.</li>
+  <li>Build and run a dockerized MySQL server (In this example, called sqlflowdata) following <a href="/sqlflow/example/datasets/README.md">example/datasets/README.md</a>. Note that there is no need to install a local MySQL server, in which case you will have a port conflict in 3306.</li>
+  <li>Pull the latest SQLFlow Docker image: <code class="highlighter-rouge">docker pull sqlflow/sqlflow:latest</code>.</li>
+</ol>
+
+<h2 id="running-your-first-sqlflow-query">Running your first SQLFlow query</h2>
+
+<p>After data is popularized in MySQL, let’s test the installation from running a query in Jupyter Notebook:</p>
+
+<ol>
+  <li>
+    <p>Start a Docker container that runs SQLFlow server and Jupyter Notebook. If you are
+using Docker for Linux, please change <code class="highlighter-rouge">host.docker.internal:3306</code> to <code class="highlighter-rouge">localhost:3306</code>.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --rm -it -p 8888:8888 sqlflow/sqlflow:latest \
+bash -c "sqlflowserver --db_user root --db_password root --db_address host.docker.internal:3306 &amp;
+SQLFLOW_SERVER=localhost:50051 jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root"
+</code></pre></div>    </div>
+
+    <p>If you are using Docker for Mac, please be aware the option <code class="highlighter-rouge">--db_address host.docker.internal:3306</code> where
+<code class="highlighter-rouge">host.docker.internal</code> translates to the host ip address as recommended <a href="https://docs.docker.com/docker-for-mac/networking/">here</a>.</p>
+
+    <p>If you are running MySQL on remote, please be aware that MySQL only allows connections from localhost
+by default. Fix can be found <a href="https://stackoverflow.com/questions/14779104/how-to-allow-remote-connection-to-mysql">here</a>.</p>
+  </li>
+  <li>
+    <p>Open a web browser, go to <code class="highlighter-rouge">localhost:8888</code> and paste the token output from Notebook command above. In a Notebook cell, you should be able to test a select statement to fetch 5 records from train table in Iris database.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%sqlflow
+select * from iris.train limit 5;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Feel free to explore more examples at <a href="/sqlflow/example/jupyter/example.ipynb">example.ipynb</a> if you are new to Jupyter Notebook.</p>
+  </li>
+</ol>
 
 
 
 
 
-          
-          <hr>
-          <h2 class="text-delta">Table of contents</h2>
-          
-          <ul>
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/database_abstraction_layer.html">Compatibility with Various SQL Engines</a>
-              </li>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/pipe.html">Piping Responses</a>
-              </li>
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/sql_parser.html">Extended SQL Parser Design</a>
-              </li>
-              
-            
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/syntax.html">SQLFlow: Design Doc</a>
-              </li>
-              
-            
-              
-              <li>
-                <a href="/sqlflow/doc/walkthrough.html">SQLFlow: Code Walkthrough</a>
-              </li>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-          </ul>
           
         </div>
       </div>

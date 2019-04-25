@@ -78,7 +78,7 @@ defaults:
       grand_parent: Document
 ```
 
-where `layout: doc"` specifies the default layout template file to be `/_layouts/doc.md'.
+where `layout: doc"` specifies the default layout template file to be `/_layouts/doc.md`.
 
 Another essential role of `/_config.yml` is to pick some Markdown files as document page source files.
 

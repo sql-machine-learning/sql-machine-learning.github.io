@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   
 
-  <title>Submitter - SQLFLOW</title>
+  <title>Document - SQLFLOW</title>
   <link rel="stylesheet" href="/assets/css/just-the-docs.css">
 
   
@@ -99,7 +99,7 @@
         
           <li class="navigation-list-item active">
             
-            <a href="/doc_index/doc.html" class="navigation-list-link">Document</a>
+            <a href="/doc_index/doc.html" class="navigation-list-link active">Document</a>
             
               
               <ul class="navigation-list-child-list ">
@@ -232,7 +232,7 @@
                   
                 
                   
-                    <li class="navigation-list-item  active">
+                    <li class="navigation-list-item ">
                       
                       <a href="/doc_index/contribute.html" class="navigation-list-link">Contribute</a>
                       
@@ -286,8 +286,8 @@
                             
                           
                             
-                              <li class="navigation-list-item  active">
-                                <a href="/sqlflow/doc/submitter.html" class="navigation-list-link active">Submitter</a>
+                              <li class="navigation-list-item ">
+                                <a href="/sqlflow/doc/submitter.html" class="navigation-list-link">Submitter</a>
                               </li>
                             
                           
@@ -360,16 +360,6 @@
       <div class="main-content">
         
           
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                
-                  <li class="breadcrumb-nav-list-item"><a href="/doc_index/doc.html">Document</a></li>
-                  <li class="breadcrumb-nav-list-item"><a href="/doc_index/contribute.html">Contribute</a></li>
-                
-                <li class="breadcrumb-nav-list-item"><span>Submitter</span></li>
-              </ol>
-            </nav>
-          
         
         <div id="main-content" class="page-content" role="main">
           <script>
@@ -380,100 +370,91 @@
 a {color: #1BA2FF}
 </style>
 
-<h1 id="submitter">Submitter</h1>
+<h1 id="document">Document</h1>
 
-<p>A submitter is a pluggable module in SQLFlow that is used to submit an ML job to a third party computation service.</p>
-
-<h2 id="workflow">Workflow</h2>
-
-<p>When a user types in an extended SQL statement, SQLFlow first parses and semantically verifies the statement. Then SQLFlow either runs the ML job locally or submits the ML job to a third party computation service.</p>
-
-<p><img src="/sqlflow/doc/figures/sqlflow-arch2.png" alt="" /></p>
-
-<p>In the latter case, SQLFlow produces a job description (<code class="highlighter-rouge">TrainDescription</code> or <code class="highlighter-rouge">PredictDescription</code>) and hands it over to the submitter. For a training SQL, SQLFlow produces <code class="highlighter-rouge">TrainDescription</code>; for prediction SQL, SQLFlow produces <code class="highlighter-rouge">PredDescription</code>. The concrete definition of the description looks like the following</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">ColumnType</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
-    </span><span class="n">Name</span><span class="x">             </span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. sepal_length</span><span class="x">
-    </span><span class="n">DatabaseTypeName</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. FLOAT</span><span class="x">
-</span><span class="p">}</span><span class="x">
-
-</span><span class="c">// SELECT *</span><span class="x">
-</span><span class="c">// FROM iris.train</span><span class="x">
-</span><span class="c">// TRAIN DNNClassifier</span><span class="x">
-</span><span class="c">// WITH</span><span class="x">
-</span><span class="c">//   n_classes = 3,</span><span class="x">
-</span><span class="c">//   hidden_units = [10, 20]</span><span class="x">
-</span><span class="c">// COLUMN sepal_length, sepal_width, petal_length, petal_width</span><span class="x">
-</span><span class="c">// LABEL class</span><span class="x">
-</span><span class="c">// INTO sqlflow_models.my_dnn_model;</span><span class="x">
-</span><span class="k">type</span><span class="x"> </span><span class="n">TrainDescription</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
-    </span><span class="n">StandardSelect</span><span class="x"> </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. SELECT * FROM iris.train</span><span class="x">
-    </span><span class="n">Estimator</span><span class="x">      </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. DNNClassifier</span><span class="x">
-    </span><span class="n">Attrs</span><span class="x">          </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. "n_classes": "3", "hidden_units": "[10, 20]"</span><span class="x">
-    </span><span class="n">X</span><span class="x">              </span><span class="p">[]</span><span class="n">ColumnType</span><span class="x"> </span><span class="c">// e.g. "sepal_length": "FLOAT", ...</span><span class="x">
-    </span><span class="n">Y</span><span class="x">              </span><span class="n">ColumnType</span><span class="x">   </span><span class="c">// e.g. "class": "INT"</span><span class="x">
-    </span><span class="n">ModelName</span><span class="x">      </span><span class="kt">string</span><span class="x">       </span><span class="c">// e.g. my_dnn_model</span><span class="x">
-</span><span class="p">}</span><span class="x">
-
-</span><span class="c">// SELECT *</span><span class="x">
-</span><span class="c">// FROM iris.test</span><span class="x">
-</span><span class="c">// PREDICT iris.predict.class</span><span class="x">
-</span><span class="c">// USING sqlflow_models.my_dnn_model;</span><span class="x">
-</span><span class="k">type</span><span class="x"> </span><span class="n">PredDescription</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
-    </span><span class="n">StandardSelect</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. SELECT * FROM iris.test</span><span class="x">
-    </span><span class="n">TableName</span><span class="x">      </span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. iris.predict</span><span class="x">
-    </span><span class="n">ModelName</span><span class="x">      </span><span class="kt">string</span><span class="x"> </span><span class="c">// e.g. my_dnn_model</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
-
-<h2 id="submitter-interface">Submitter Interface</h2>
-
-<p>The submitter interface should provide two functions <code class="highlighter-rouge">Train</code> and <code class="highlighter-rouge">Predict</code>. The detailed definition can be the following</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">Submitter</span><span class="x"> </span><span class="k">interface</span><span class="x"> </span><span class="p">{</span><span class="x">
-    </span><span class="c">// Train executes a ML training job and streams job's response through writer.</span><span class="x">
-    </span><span class="c">// A typical Train function should include</span><span class="x">
-    </span><span class="c">// - Loading the training data</span><span class="x">
-    </span><span class="c">// - Initializing the model</span><span class="x">
-    </span><span class="c">// - model.train</span><span class="x">
-    </span><span class="c">// - Saving the trained model to a persistent storage</span><span class="x">
-    </span><span class="n">Train</span><span class="p">(</span><span class="n">desc</span><span class="x"> </span><span class="n">TrainDescription</span><span class="p">,</span><span class="x"> </span><span class="n">writer</span><span class="x"> </span><span class="n">PipeWriter</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x">
-    </span><span class="c">// Predict executes a ML predicting job and streams job's response through writer</span><span class="x">
-    </span><span class="c">// A typical Predict function should include</span><span class="x">
-    </span><span class="c">// - Loading the model from a persistent storage</span><span class="x">
-    </span><span class="c">// - Loading the prediction data</span><span class="x">
-    </span><span class="c">// - model.predict</span><span class="x">
-    </span><span class="c">// - Writing the prediction result to a table</span><span class="x">
-    </span><span class="n">Predict</span><span class="p">(</span><span class="n">desc</span><span class="x"> </span><span class="n">PredictDescription</span><span class="p">,</span><span class="x"> </span><span class="n">writer</span><span class="x"> </span><span class="n">PipeWriter</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
-
-<h2 id="register-a-submitter">Register a submitter</h2>
-
-<p>A new submitter can be added as</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-    </span><span class="s">".../my_submitter"</span><span class="x">
-    </span><span class="s">".../sqlflow/sql"</span><span class="x">
-</span><span class="p">)</span><span class="x">
-
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-    </span><span class="c">// ...</span><span class="x">
-    </span><span class="n">sql</span><span class="o">.</span><span class="n">Register</span><span class="p">(</span><span class="n">my_submitter</span><span class="o">.</span><span class="n">NewSubmitter</span><span class="p">())</span><span class="x">
-    </span><span class="c">// ...</span><span class="x">
-    </span><span class="k">for</span><span class="x"> </span><span class="p">{</span><span class="x">
-    	</span><span class="n">sql</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">recv</span><span class="p">()</span><span class="x">
-    	</span><span class="n">sql</span><span class="o">.</span><span class="n">Run</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span><span class="x">
-    </span><span class="p">}</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
-
-<p>where <code class="highlighter-rouge">sql.Register</code> will put <code class="highlighter-rouge">my_submitter</code> instance to package level registry. During <code class="highlighter-rouge">sql.Run</code>, it will check whether there is a submitter registered. If there is, <code class="highlighter-rouge">sql.Run</code> will run either <code class="highlighter-rouge">submitter.Train</code> or <code class="highlighter-rouge">submitter.Predict</code>.</p>
+<p>Documents of SQLFLOW</p>
 
 
 
 
 
+          
+          <hr>
+          <h2 class="text-delta">Table of contents</h2>
+          
+          <ul>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li>
+                <a href="/sqlflow/doc/installation.html">Installation</a>
+              </li>
+              
+            
+              
+              <li>
+                <a href="/doc_index/design.html">Design</a>
+              </li>
+              
+            
+              
+              <li>
+                <a href="/doc_index/contribute.html">Contribute</a>
+              </li>
+              
+            
+          </ul>
           
         </div>
       </div>

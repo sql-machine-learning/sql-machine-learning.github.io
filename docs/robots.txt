@@ -1,1 +1,0 @@
-Sitemap: /sql-machine-learning.github.io/sitemap.xml

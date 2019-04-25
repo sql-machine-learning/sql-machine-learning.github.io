@@ -4,7 +4,7 @@ classes: wide
 
 search_enabled: true
 
-title: 'SQLFLOW'
+title: 'SQLFlow'
 
 ga_tracking: UA-17331483-8
 
@@ -22,12 +22,12 @@ defaults:
     values:
       layout: "doc"
       nav_exclude: true
-      grand_parent: Document
+      grand_parent: Documents
   - scope:
       path: "sqlflow/doc/installation.md"
     values:
       nav_exclude: false
-      parent: Document
+      parent: Documents
       nav_order: 1
   - scope:
       path: "sqlflow/doc/syntax.md"

@@ -1,10 +1,10 @@
 ---
 has_children: true
-title: Document
+title: Documents
 nav_order: 0
 layout: doc
 ---
 
-# Document
+# Documents
 
 Documents of SQLFLOW

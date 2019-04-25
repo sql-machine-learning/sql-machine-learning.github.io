@@ -22,13 +22,24 @@ We see the following files and directories at the root of this repository:
 
 ## Build and Serve Locally
 
-To call Jekyll and Just-the-Doc locally, we need to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/), and then bundler and Jekyll.
+To call Jekyll and Just-the-Doc locally, we need to install and run Jekyll.  However, poeple might install different versions of Jekyll and dependencies and it would be difficult to reproduce Web site build errors.  So, we recommend run official Docker images of Jekyll.
 
 ```bash
-gem install bundler jekyll # install Jekyll and the package manager bundler.
-bundle install             # install dependencies specified in /Gemfile.
-bundle exec jekyll serve # now browse to http://localhost:4000.
+git clone https://github.com/sql-machine-learning/sql-machine-learning.github.io
+cd sql-machine-learning.github.io
+docker run --rm -it \
+   -v $PWD:/srv/kyll \
+   -e JEKYLL_GITHUB_TOKEN=b90ffea2 \
+   -p 4000:4000 \
+   jekyll/jekyll:3.8 \
+   jekyll serve 
 ```
+
+Please make sure to replace `b90ffea2` by your Github personal access token.  It takes you a few seconds to create one by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
+
+For macOS users, please install [Docker for Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-mac); other implementations like Docker Toolbox cannot expose Jekyll port to your macOS host.
+
+Now, browse to http://localhost:4000 for the Web site.
 
 ## Pages, Documents, and Redirects
 

@@ -6,8 +6,6 @@ search_enabled: true
 
 title: 'SQLFLOW'
 
-destination: 'docs'
-
 ga_tracking: UA-17331483-8
 
 aux_links:

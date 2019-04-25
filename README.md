@@ -6,7 +6,7 @@ We rely on the [Github Pages](https://pages.github.com/) service to convert Mark
 
 ## How to Contribute
 
-When we make any change to this repo, we can run Jekyll and Just-the-Doc locally to create a Web site running on our laptop computer so could we visually verify our change.  Then, we git-push our change to our fork repository like https://github.com/somebody/sql-machine-learning and create a pull request.  Reviewers could browse to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.
+When we make any change to this repo, we can run Jekyll locally to create a Web site for a quick preview of our change.  If everything looks good, we can git-push our change to our fork repository, say, https://github.com/somebody/sql-machine-learning, and create a pull request.  Reviewers could browse to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.
 
 ## Walkthrough the Repository
 
@@ -22,7 +22,7 @@ We see the following files and directories at the root of this repository:
 
 ## Build and Serve Locally
 
-To call Jekyll and Just-the-Doc locally, we need to install and run Jekyll.  However, poeple might install different versions of Jekyll and dependencies and it would be difficult to reproduce Web site build errors.  So, we recommend run official Docker images of Jekyll.
+To build the Web site locally, we may choose to install Jekyll.  However, poeple might install different versions of Jekyll and dependencies, and it could be difficult to reproduce Web site build errors.  So, we recommend running official Docker images of Jekyll, which includes a specified version of Jekyll and all its dependencies.  The following command runs Jekyll 3.8 locally to build and serve the Web site.
 
 ```bash
 git clone https://github.com/sql-machine-learning/sql-machine-learning.github.io

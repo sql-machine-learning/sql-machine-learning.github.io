@@ -84,6 +84,11 @@ defaults:
     values:
       nav_exclude: false
       parent: Contribute
+  - scope:
+      path: "gohive"
+    values:
+        layout: doc
+        parent: GoHive
 
 
 footer:

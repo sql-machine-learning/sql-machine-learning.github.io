@@ -32,7 +32,7 @@ docker run --rm -it \
    -e JEKYLL_GITHUB_TOKEN=b90ffea2 \
    -p 4000:4000 \
    jekyll/jekyll:3.8 \
-   jekyll serve 
+   jekyll serve --incremental
 ```
 
 Please make sure to replace `b90ffea2` by your Github personal access token.  It takes you a few seconds to create one by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).

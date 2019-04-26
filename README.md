@@ -6,7 +6,7 @@ We rely on the [Github Pages](https://pages.github.com/) service to convert Mark
 
 ## How to Contribute
 
-When we make any change to this repo, we can run Jekyll locally to create a Web site for a quick preview of our change.  If everything looks good, we can git-push our change to our fork repository, say, https://github.com/somebody/sql-machine-learning, and create a pull request.  Reviewers could browse to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.
+When we make any change to this repo, we can run Jekyll locally to create a Web site for a quick preview of our change.  If everything looks good, we can git-push our change to our fork repository, say, https://github.com/somebody/sql-machine-learning, and create a pull request.  Reviewers could browse to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.  (To enable the preview of your fork, you need to change the settings of your fork as described [here](https://github.com/sql-machine-learning/sql-machine-learning.github.io/issues/46)).
 
 ## Walkthrough the Repository
 

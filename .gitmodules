@@ -2,3 +2,7 @@
 	path = sqlflow
 	url = https://github.com/sql-machine-learning/sqlflow
 	branch = develop
+[submodule "pysqlflow"]
+	path = pysqlflow
+	url = https://github.com/sql-machine-learning/pysqlflow
+	branch = develop

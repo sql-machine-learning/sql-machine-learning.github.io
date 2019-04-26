@@ -18,6 +18,11 @@ exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
 defaults:
   - scope:
+      path: "pysqlflow"
+    values:
+        layout: doc
+        parent: Pysqlflow
+  - scope:
       path: "sqlflow"
     values:
       layout: "doc"

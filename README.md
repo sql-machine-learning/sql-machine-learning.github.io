@@ -28,7 +28,7 @@ To build the Web site locally, we may choose to install Jekyll.  However, poeple
 git clone https://github.com/sql-machine-learning/sql-machine-learning.github.io
 cd sql-machine-learning.github.io
 docker run --rm -it \
-   -v $PWD:/srv/kyll \
+   -v $PWD:/srv/jekyll \
    -e JEKYLL_GITHUB_TOKEN=b90ffea2 \
    -p 4000:4000 \
    jekyll/jekyll:3.8 \

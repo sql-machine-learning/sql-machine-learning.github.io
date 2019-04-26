@@ -83,12 +83,12 @@ defaults:
       path: "pysqlflow/doc/desigin/client_design_doc.md"
     values:
       nav_exclude: false
-      parent: Jupyter
+      parent: PySQLFlow
   - scope:
       path: "pysqlflow/doc/desigin/magic_design_doc.md"
     values:
       nav_exclude: false
-      parent: Jupyter
+      parent: PySQLFlow
 
 
 

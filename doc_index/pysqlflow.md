@@ -1,9 +1,8 @@
 ---
 has_children: true
-title: Jupyter
-nav_order: 4
+title: PySQLFlow
+nav_order: 1
 layout: doc
-parent: Documents
 ---
 
 # Jupyter Integration

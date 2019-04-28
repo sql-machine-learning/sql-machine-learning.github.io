@@ -18,11 +18,6 @@ exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
 defaults:
   - scope:
-      path: "pysqlflow"
-    values:
-        layout: doc
-        parent: Pysqlflow
-  - scope:
       path: "sqlflow"
     values:
       layout: "doc"
@@ -84,6 +79,16 @@ defaults:
     values:
       nav_exclude: false
       parent: Contribute
+  - scope:
+      path: "pysqlflow/doc/desigin/client_design_doc.md"
+    values:
+      nav_exclude: false
+      parent: PySQLFlow
+  - scope:
+      path: "pysqlflow/doc/desigin/magic_design_doc.md"
+    values:
+      nav_exclude: false
+      parent: PySQLFlow
   - scope:
       path: "gohive"
     values:

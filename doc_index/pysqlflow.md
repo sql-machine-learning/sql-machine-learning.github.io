@@ -1,10 +1,10 @@
 ---
 has_children: true
-title: Pysqlflow
+title: PySQLFlow
 nav_order: 1
 layout: doc
 ---
 
-# pysqlflow
+# PySQLFlow
 
-[SQLFlow](https://github.com/sql-machine-learning/sqlflow) client library for Python.
+Python client of [SQLFlow](https://github.com/sql-machine-learning/sqlflow) and Jupyter Notebook magic command.

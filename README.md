@@ -1,12 +1,6 @@
 ## SQLFlow.org
 
-This repository holds the content of https://sqlflow.org
-
-We rely on the [Github Pages](https://pages.github.com/) service to convert Markdown files in this repo into HTML files.  Github Pages calls the converter [Jekyll](https://jekyllrb.com/docs/) , which churns through layout and other decorations.  In addition, we use Jekyll to call [Just-the-Doc](https://pmarsceill.github.io/just-the-docs/) to generate the corresponding document.
-
-## How to Contribute
-
-When we make any change to this repo, we can run Jekyll locally to create a Web site for a quick preview of our change.  If everything looks good, we can git-push our change to our fork repository, say, https://github.com/somebody/sql-machine-learning, and create a pull request.  Reviewers could browse to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.  (To enable the preview of your fork, you need to change the settings of your fork as described [here](https://github.com/sql-machine-learning/sql-machine-learning.github.io/issues/46)).
+This repository holds the content of [SQLFlow.org](https://sql-machine-learning.github.io/). We rely on the [Github Pages](https://pages.github.com/) to convert Markdown files in this repo into HTML files. Github pages calls the converter [Jekyll](https://jekyllrb.com/docs/) , which churns through layout and other decorations.  In addition, we use Jekyll to call [Just-the-Doc](https://pmarsceill.github.io/just-the-docs/) to generate the corresponding documents.
 
 ## Repo Walkthrough
 
@@ -21,21 +15,21 @@ We see the following files and directories at the root of this repository:
 
 ## Instructions for serving a local SQLFlow website 
 
-To run SQLFlow website we may choose to install Jekyll and its dependencies. However, poeple may choose different version of Jekyll, making it hard to reproduce runtime errors. Therefore, we recommend using dockerized Jekyll, which includes a specifici version (3.8) of Jekyll and the dependencies in the image. Note for Mac users, please install [Docker for Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-mac); other tools like Docker Toolbox cannot expose Jekyll port in the local host.
+To run SQLFlow website we need to install Jekyll and its dependencies. However, there are different versions of Jekyll, making it hard to reproduce runtime errors. Therefore, we recommend using dockerized Jekyll, which includes a specifici version (3.8) of Jekyll and the dependencies in the image. Note for Mac users, please install [Docker for Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-mac); other tools like Docker Toolbox cannot expose Jekyll port in the local host.
 
-Step One: Clone SQLFlow repo to your local machine. For potential contributors, please fork the repo and then make a clone.
+**Step One**: Clone SQLFlow repo to your local machine. For potential contributors, please fork the repo and then make a clone.
 
 ```bash
 git clone https://github.com/sql-machine-learning/sql-machine-learning.github.io
 ```
 
-Step Two: Update markdown files. Most of the document markdown files and redirect `index.html` files can be found in the adjacent repos like SQLFlow, GoHive, PySQLFlow. To include them into the website, we create git submodules like `/sqlflow` then point them to the right repo. If you are going through the instruction for the first time, please use below command to include the markdown files before running Jekyll serve. Whenever there are updates to markdown file in other repo like SQLFlow, GoHive, PySQLFlow, please remember to run the command again without --init to update the content. Otherwise, the updated content won't show up in the website. 
+**Step Two**: Update markdown files. Most of the document markdown files and redirect `index.html` files can be found in the adjacent repos like SQLFlow, GoHive, PySQLFlow. To include them into the website, we create git submodules like `/sqlflow` then point them to the right repo. If you are going through the instruction for the first time, please use below command to include the markdown files before running Jekyll serve. Whenever there are updates to markdown file in other repo, please run the command again without --init to update the content. Otherwise, the updated content won't show up. 
 
 ```bash
 git submodule update --init --recursive --remote
 ```
 
-Step Three: Fire up docker run under the repo root. Note the command will pull the image from the remote automatically. Make sure to replace `b90ffea2` with your personal access token. It takes a few seconds to generate the token by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
+**Step Three**: Fire up docker run under the repo root. Note the command will pull the image from the remote automatically. Also, make sure to replace `b90ffea2` with your personal access token. It takes a few seconds to generate the token by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). Now you can access SQLFlow.org from http://localhost:4000 with exact the same content.
 
 ```bash
 cd sql-machine-learning.github.io
@@ -47,11 +41,9 @@ docker run --rm -it \
    jekyll serve --incremental
 ```
 
-Now, you can access SQLFlow website from http://localhost:4000 with the same content online.
+## Jekyll Pages, Documents, and Redirects
 
-## Pages, Documents, and Redirects
-
-The generated Web site serves the following kinds of content.
+The generated website serves the four kinds of contents below:
 
 1. Jekyll [Pages](https://jekyllrb.com/docs/pages/).  
 
@@ -96,10 +88,12 @@ Another essential role of `/_config.yml` is to pick some Markdown files as docum
    In `_data/navigation.yml`, we define the navigation bar on the homepage.  Currently, there are three links there.  If we want more than three, we would need to edit the style of `_layout/index.html`.
 
 
+## How to Contribute
+
+When we make change to this repo, we can run Jekyll locally to create a Web site for a quick preview of our change.  If everything looks good, we can git-push our change to our fork repository, say, https://github.com/somebody/sql-machine-learning, and create a pull request.  Reviewers could go to https://somebody.github.io/sql-machine-learning.github.io/ for a preview.  (To enable the preview of your fork, you need to change the settings of your fork as described [here](https://github.com/sql-machine-learning/sql-machine-learning.github.io/issues/46)).
 
 ## Trouble Shooting
 
 - Jekyll liquid syntax error
   
   Jekyll allows Markdown file authors to use the liquid braces `{{}}` to specify the front matter.  To avoid ambiguity, when we write double curly braces in our Markdown files, we must wrap them up into `{% raw %}` and `{% endraw %}` or we can try just don't use double curly braces.
- 

@@ -6,3 +6,7 @@
 	path = pysqlflow
 	url = https://github.com/sql-machine-learning/pysqlflow
 	branch = develop
+[submodule "gohive"]
+	path = gohive
+	url = https://github.com/sql-machine-learning/gohive
+	branch = develop

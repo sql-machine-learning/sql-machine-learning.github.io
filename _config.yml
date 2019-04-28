@@ -22,12 +22,12 @@ defaults:
     values:
       layout: "doc"
       nav_exclude: true
-      grand_parent: Documents
+      grand_parent: SQLFlow
   - scope:
       path: "sqlflow/doc/installation.md"
     values:
       nav_exclude: false
-      parent: Documents
+      parent: SQLFlow
       nav_order: 1
   - scope:
       path: "sqlflow/doc/syntax.md"
@@ -89,7 +89,11 @@ defaults:
     values:
       nav_exclude: false
       parent: PySQLFlow
-
+  - scope:
+      path: "gohive"
+    values:
+        layout: doc
+        parent: GoHive
 
 
 footer:

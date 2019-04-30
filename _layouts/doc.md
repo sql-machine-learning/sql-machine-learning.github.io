@@ -10,6 +10,6 @@ layout: default
 a {color: #1BA2FF}
 </style>
 
-{{content | replace: "/example/" , "/sqlflow/example/"| replace: "doc/figures/" , "/sqlflow/doc/figures/"}}
+{{content | replace: "README.md", "" | replace: ".md", "" | replace: '/example/', '../example/' }}
 
 

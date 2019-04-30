@@ -67,20 +67,20 @@ The generated website serves the four kinds of contents below:
    
    Jekyll allows document authors to specify the layout template by adding a [front matter](https://jekyllrb.com/docs/front-matter/) in their document Markdown files.  However, most document authors are developers who don't know anything about the front matter and follow the plain Markdown syntax.  So, in `/_config.yml` we write the following snippet
 
-```yaml
-# in _config.yml, using defaults to set default value of md files
-defaults:
-  - scope:
-      path: "sqlflow"
-    values:
-      layout: "doc"
-      nav_exclude: true # hide all files from nav
-      grand_parent: Document
-```
+   ```yaml
+   # in _config.yml, using defaults to set default value of md files
+   defaults:
+     - scope:
+         path: "sqlflow"
+       values:
+         layout: "doc"
+         nav_exclude: true # hide all files from nav
+         grand_parent: Document
+   ```
 
-where `layout: doc"` specifies the default layout template file to be `/_layouts/doc.md`.
+   where `layout: doc"` specifies the default layout template file to be `/_layouts/doc.md`.
 
-Another essential role of `/_config.yml` is to pick some Markdown files as document page source files.
+   Another essential role of `/_config.yml` is to pick some Markdown files as document page source files.
 
 
 1. The Navigation Bar

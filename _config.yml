@@ -81,6 +81,10 @@ defaults:
       nav_exclude: false
       parent: Contribute
   - scope:
+      path: "pysqlflow"
+    values:
+      prefix: '/pysqlflow/'
+  - scope:
       path: "pysqlflow/doc/desigin/client_design_doc.md"
     values:
       nav_exclude: false
@@ -95,6 +99,7 @@ defaults:
     values:
         layout: doc
         parent: GoHive
+        prefix: '/gohive/'
 
 
 footer:

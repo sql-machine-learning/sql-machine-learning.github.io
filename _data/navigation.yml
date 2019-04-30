@@ -2,6 +2,6 @@ main:
   - title: "Installation"
     url: sqlflow/doc/installation
   - title: "Documents"
-    url: doc_index/sqlflow
+    url: doc_index/doc
   - title: "GitHub"
     url: https://github.com/sql-machine-learning

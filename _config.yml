@@ -14,7 +14,7 @@ aux_links:
 
 exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
-# baseurl: "/sql-machine-learning.github.io/"
+baseurl: "/sql-machine-learning.github.io/"
 
 defaults:
   - scope:

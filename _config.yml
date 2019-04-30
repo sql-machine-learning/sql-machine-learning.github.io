@@ -27,6 +27,7 @@ defaults:
     values:
       layout: "doc"
       nav_exclude: true
+      prefix: '/sqlflow/'
       grand_parent: Documents
   - scope:
       path: "sqlflow/doc/installation.md"

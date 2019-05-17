@@ -13,3 +13,4 @@
 [submodule "gomaxcompute"]
 	path = gomaxcompute
 	url = https://github.com/sql-machine-learning/gomaxcompute
+	branch = develop

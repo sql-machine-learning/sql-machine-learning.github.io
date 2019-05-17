@@ -7,4 +7,4 @@ layout: doc
 
 # GoMaxCompute
 
-A Go driver for [MaxCompute(ODPS)](https://www.alibabacloud.com/product/maxcompute) by AliCloud
+A Go driver for [MaxCompute(ODPS)](https://www.alibabacloud.com/product/maxcompute) by AliCloud.

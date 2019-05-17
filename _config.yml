@@ -90,15 +90,15 @@ defaults:
       nav_exclude: false
       parent: PySQLFlow
   - scope:
-      path: "gohive"
-    values:
-        layout: doc
-        parent: GoHive
-  - scope:
       path: "gomaxcompute"
     values:
-        layout: doc
-        parent: GoMaxCompute
+      layout: doc
+      parent: GoMaxCompute
+  - scope:
+      path: "gohive"
+    values:
+      layout: doc
+      parent: GoHive
 
 
 footer:

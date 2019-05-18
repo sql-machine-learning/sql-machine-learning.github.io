@@ -23,6 +23,7 @@ defaults:
       layout: "doc"
       nav_exclude: true
       grand_parent: SQLFlow
+      prefix: '/sqlflow/'
   - scope:
       path: "sqlflow/doc/installation.md"
     values:
@@ -80,6 +81,10 @@ defaults:
       nav_exclude: false
       parent: Contribute
   - scope:
+      path: "pysqlflow"
+    values:
+      prefix: '/pysqlflow/'
+  - scope:
       path: "pysqlflow/doc/desigin/client_design_doc.md"
     values:
       nav_exclude: false
@@ -94,6 +99,7 @@ defaults:
     values:
         layout: doc
         parent: GoHive
+        prefix: '/gohive/'
 
 
 footer:

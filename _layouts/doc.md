@@ -10,6 +10,8 @@ layout: default
 a {color: #1BA2FF}
 </style>
 
-{{content | replace: "/example/" , "/sqlflow/example/"| replace: "doc/figures/" , "/sqlflow/doc/figures/"}}
+{% assign href_prefix = 'href="' | append: page.prefix %}
+
+{{content | replace: "README.md", "" | replace: ".md", "" | replace: 'href="/', href_prefix }}
 
 

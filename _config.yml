@@ -95,12 +95,16 @@ defaults:
       nav_exclude: false
       parent: PySQLFlow
   - scope:
+      path: "gomaxcompute"
+    values:
+      layout: doc
+      parent: GoMaxCompute
+  - scope:
       path: "gohive"
     values:
-        layout: doc
-        parent: GoHive
-        prefix: '/gohive/'
-
+      layout: doc
+      parent: GoHive
+      prefix: '/gohive/'
 
 footer:
   links:

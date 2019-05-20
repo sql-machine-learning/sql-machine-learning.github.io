@@ -10,3 +10,7 @@
 	path = gohive
 	url = https://github.com/sql-machine-learning/gohive
 	branch = develop
+[submodule "gomaxcompute"]
+	path = gomaxcompute
+	url = https://github.com/sql-machine-learning/gomaxcompute
+	branch = develop

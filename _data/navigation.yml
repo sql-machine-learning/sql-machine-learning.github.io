@@ -1,7 +1,11 @@
 main:
+  - title: "PlayGround"
+    url: http://play.sqlflow.org/
   - title: "Installation"
     url: sqlflow/doc/installation
   - title: "Documents"
     url: doc_index/sqlflow
+  - title: "Blog"
+    url: https://medium.com/@SQLflow
   - title: "GitHub"
     url: https://github.com/sql-machine-learning

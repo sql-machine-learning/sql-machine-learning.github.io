@@ -14,3 +14,7 @@
 	path = gomaxcompute
 	url = https://github.com/sql-machine-learning/gomaxcompute
 	branch = develop
+[submodule "elasticdl"]
+	path = elasticdl
+	url = https://github.com/sql-machine-learning/elasticdl
+	branch = develop

@@ -105,6 +105,11 @@ defaults:
       layout: doc
       parent: GoHive
       prefix: '/gohive/'
+  - scope:
+      path: "elasticdl"
+    values:
+      layout: doc
+      parent: ElasticDL
 
 footer:
   links:

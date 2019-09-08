@@ -105,11 +105,71 @@ defaults:
       layout: doc
       parent: GoHive
       prefix: '/gohive/'
+
+
   - scope:
       path: "elasticdl"
     values:
-      layout: doc
+      nav_exclude: true
+      prefix: '/elasticdl'
+  - scope:
+      path: "elasticdl/elasticdl/doc/overview.md"
+    values:
+      nav_exclude: false
       parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/worker_optimization_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/odps_support_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/model_evaluation_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/model_building.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/high-level-api.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/elastic_sync_sgd.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/elastic_scheduling.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/distributed_embedding_layer_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/data_preparation_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+  - scope:
+      path: "elasticdl/elasticdl/doc/distributed_embedding_layer_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+
+
+  
 
 footer:
   links:

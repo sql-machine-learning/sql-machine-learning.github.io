@@ -3,5 +3,7 @@ main:
     url: sqlflow/doc/installation
   - title: "Documents"
     url: doc_index/sqlflow
+  - title: "ElasticDL"
+    url: https://github.com/sql-machine-learning/elasticdl
   - title: "GitHub"
     url: https://github.com/sql-machine-learning

@@ -113,11 +113,6 @@ defaults:
       nav_exclude: true
       prefix: '/elasticdl'
   - scope:
-      path: "elasticdl/elasticdl/doc/overview.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-  - scope:
       path: "elasticdl/elasticdl/doc/worker_optimization_design.md"
     values:
       nav_exclude: false
@@ -162,12 +157,6 @@ defaults:
     values:
       nav_exclude: false
       parent: ElasticDL
-  - scope:
-      path: "elasticdl/elasticdl/doc/distributed_embedding_layer_design.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-
 
   
 

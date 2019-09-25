@@ -1,6 +1,6 @@
 main:
-  - title: "Installation"
-    url: sqlflow/doc/installation
+  - title: "User Guide"
+    url: sqlflow/doc/user_guide
   - title: "Documents"
     url: doc_index/sqlflow
   - title: "ElasticDL"

@@ -1,20 +1,23 @@
-remote_theme: pmarsceill/just-the-docs
+title: 'SQLFlow'
+description: Bridging Data and AI
 
-classes: wide
+permalink: pretty
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py']
 
 search_enabled: true
+search_tokenizer_separator: /[\s/]+/
 
-title: 'SQLFlow'
-
-ga_tracking: UA-17331483-8
+heading_anchors: true
 
 aux_links:
   "GitHub":
     - "https://github.com/sql-machine-learning/sqlflow"
 
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
-# baseurl: "/sql-machine-learning.github.io/"
+remote_theme: pmarsceill/just-the-docs
+classes: wide
+color_scheme: nil
+ga_tracking: UA-17331483-8
 
 defaults:
   - scope:
@@ -25,141 +28,293 @@ defaults:
       grand_parent: SQLFlow
       prefix: '/sqlflow/'
   - scope:
-      path: "sqlflow/doc/installation.md"
+      path: "models"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: Models 
+  - scope:
+      path: "elasticdl"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: ElasticDL 
+      prefix: '/elasticdl/'
+  - scope:
+      path: "pysqlflow"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: PySQLFlow
+      prefix: '/pysqlflow/'
+  - scope:
+      path: "gohive"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: GoHive 
+      prefix: '/gohive/'
+  - scope:
+      path: "gomaxcompute"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: GoMaxCompute
+      prefix: '/gomaxcompute/'
+  - scope:
+      path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
-      parent: SQLFlow
+      parent: Get Started
       nav_order: 1
   - scope:
-      path: "sqlflow/doc/syntax.md"
+      path: "sqlflow/doc/user_guide.md"
     values:
-      nav_exclude: false
-      parent: Design
+      nav_exclude: false 
+      parent: Get Started
+      nav_order: 2
   - scope:
-      path: "sqlflow/doc/walkthrough.md"
+      path: "sqlflow/doc/run/repl.md"
     values:
-      nav_exclude: false
-      parent: Design
+      nav_exclude: true
+      parent: Get Started
+      nav_order: 3
   - scope:
-      path: "sqlflow/doc/sql_parser.md"
+      path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: Installation
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/database_abstraction_layer.md"
+      path: "sqlflow/doc/run/gcp.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: Install SQLFlow on Cloud
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/pipe.md"
+      path: "sqlflow/doc/run/kubernetes.md"
+    values:
+      nav_exclude: false
+      parent: Install SQLFlow on Cloud
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/run_with_mysql.md"
+    values:
+      nav_exclude: false
+      parent: Run SQLFlow with SQL Engines
+      nav_order: 1
+  - scope:
+      path: "sqlflow/doc/run_with_hive.md"
+    values:
+      nav_exclude: false
+      parent: Run SQLFlow with SQL Engines
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/run_with_maxcompute.md"
+    values:
+      nav_exclude: false
+      parent: Run SQLFlow with SQL Engines
+      nav_order: 3
+  - scope:
+      path: "sqlflow/doc/tutorial/iris-dnn.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 1
+  - scope:
+      path: "sqlflow/doc/tutorial/imdb-stackedbilstm.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/tutorial/fraud-dnn.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 4
+  - scope:
+      path: "sqlflow/doc/tutorial/housing-xgboost.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 5
+  - scope:
+      path: "sqlflow/doc/tutorial/housing-analyze.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 6
+  - scope:
+      path: "sqlflow/doc/design/design_alps_submitter.md"
     values:
       nav_exclude: false
       parent: Design
+      nav_order: 1
+  - scope:
+      path: "sqlflow/doc/design/design_analyzer.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/design/design_xgboost_on_sqlflow.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 3
+  - scope:
+      path: "sqlflow/doc/design/design_auth.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 4
+  - scope:
+      path: "sqlflow/doc/design/design_clustermodel.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 5
+  - scope:
+      path: "sqlflow/doc/design/design_customized_model.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 6
+  - scope:
+      path: "sqlflow/doc/design/design_elasticdl_on_sqlflow.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 7
+  - scope:
+      path: "sqlflow/doc/design/design_feature_derivation.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 8
+  - scope:
+      path: "sqlflow/doc/design/design_syntax.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 9
   - scope:
       path: "sqlflow/doc/build.md"
     values:
       nav_exclude: false
-      parent: Contribute
+      parent: Contributes
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/build-tensorflow.md"
+      path: "sqlflow/doc/walkthrough.md"
     values:
       nav_exclude: false
-      parent: Contribute
+      parent: Contributes
+      nav_order: 2
   - scope:
-      path: "sqlflow/doc/mysql-setup.md"
+      path: "models/doc/contribute_models.md"
     values:
       nav_exclude: false
-      parent: Contribute
+      parent: Contributes
+      grand_parent: SQLFlow
+      nav_order: 3
   - scope:
-      path: "sqlflow/doc/close_producer_from_consumer.md"
+      path: "gohive/README.md"
     values:
       nav_exclude: false
-      parent: Contribute
-  - scope:
-      path: "sqlflow/doc/submitter.md"
-    values:
-      nav_exclude: false
-      parent: Contribute
-  - scope:
-      path: "pysqlflow"
-    values:
-      prefix: '/pysqlflow/'
-  - scope:
-      path: "pysqlflow/doc/desigin/client_design_doc.md"
-    values:
-      nav_exclude: false
-      parent: PySQLFlow
-  - scope:
-      path: "pysqlflow/doc/desigin/magic_design_doc.md"
-    values:
-      nav_exclude: false
-      parent: PySQLFlow
-  - scope:
-      path: "gomaxcompute"
-    values:
-      layout: doc
-      parent: GoMaxCompute
-  - scope:
-      path: "gohive"
-    values:
-      layout: doc
       parent: GoHive
-      prefix: '/gohive/'
-
-
+      nav_order: 1
   - scope:
-      path: "elasticdl"
+      path: "gohive/doc/design.md"
     values:
-      nav_exclude: true
-      prefix: '/elasticdl'
+      nav_exclude: false
+      parent: GoHive
+      nav_order: 2
   - scope:
-      path: "elasticdl/elasticdl/doc/worker_optimization_design.md"
+      path: "gohive/docker/README.md"
+    values:
+      nav_exclude: false
+      parent: GoHive
+      nav_order: 3
+  - scope:
+      path: "gomaxcompute/README.md"
+    values:
+      nav_exclude: false
+      parent: GoMaxCompute 
+      nav_order: 1
+  - scope:
+      path: "pysqlflow/doc/design/client_design_doc.md"
+    values:
+      nav_exclude: false
+      parent: PySQLFlow 
+      nav_order: 1
+  - scope:
+      path: "pysqlflow/doc/design/magic_design_doc.md"
+    values:
+      nav_exclude: false
+      parent: PySQLFlow 
+      nav_order: 2
+  - scope:
+      path: "elasticdl/doc/data_preparation_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL 
+      nav_order: 1
+  - scope:
+      path: "elasticdl/doc/distributed_embedding_layer_design.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL 
+      nav_order: 2
+  - scope:
+      path: "elasticdl/doc/tutorials/elasticdl_cloud.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL 
+      nav_order: 3
+  - scope:
+      path: "elasticdl/doc/worker_optimization_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 4
   - scope:
-      path: "elasticdl/elasticdl/doc/odps_support_design.md"
+      path: "elasticdl/doc/odps_support_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 5
   - scope:
-      path: "elasticdl/elasticdl/doc/model_evaluation_design.md"
+      path: "elasticdl/doc/model_evaluation_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 6
   - scope:
-      path: "elasticdl/elasticdl/doc/model_building.md"
+      path: "elasticdl/doc/model_building.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 7
   - scope:
-      path: "elasticdl/elasticdl/doc/high-level-api.md"
+      path: "elasticdl/doc/high-level-api.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 8
   - scope:
-      path: "elasticdl/elasticdl/doc/elastic_sync_sgd.md"
+      path: "elasticdl/doc/elastic_sync_sgd.md"
     values:
       nav_exclude: false
       parent: ElasticDL
+      nav_order: 9
   - scope:
-      path: "elasticdl/elasticdl/doc/elastic_scheduling.md"
+      path: "elasticdl/doc/elastic_scheduling.md"
     values:
       nav_exclude: false
       parent: ElasticDL
-  - scope:
-      path: "elasticdl/elasticdl/doc/distributed_embedding_layer_design.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-  - scope:
-      path: "elasticdl/elasticdl/doc/data_preparation_design.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-
+      nav_order: 10 
   
-
 footer:
   links:
     - label: "GitHub"
@@ -173,3 +328,12 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-seo-tag
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false

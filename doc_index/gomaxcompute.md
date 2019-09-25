@@ -1,7 +1,7 @@
 ---
 has_children: true
 title: GoMaxCompute
-nav_order: 2
+nav_order: 3
 layout: doc
 ---
 

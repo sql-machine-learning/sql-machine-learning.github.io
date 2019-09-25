@@ -10,3 +10,13 @@
 	path = models
 	url = https://github.com/sql-machine-learning/models
 	branch = develop
+[submodule "gomaxcompute"]
+	path = gomaxcompute
+	url = https://github.com/sql-machine-learning/gomaxcompute
+[submodule "gohive"]
+	path = gohive
+	url = https://github.com/sql-machine-learning/gohive
+[submodule "pysqlflow"]
+	path = pysqlflow
+	url = https://github.com/sql-machine-learning/pysqlflow
+

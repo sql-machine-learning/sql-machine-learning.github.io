@@ -6,5 +6,3 @@ layout: doc
 parent: SQLFlow
 ---
 # Get Started
-
-Let's play SQLFlow

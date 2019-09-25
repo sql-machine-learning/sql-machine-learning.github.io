@@ -6,5 +6,3 @@ layout: default
 parent: Installation
 ---
 # Run SQLFlow with SQL Engines
-
-With MySQL, Hive, MaxCompute

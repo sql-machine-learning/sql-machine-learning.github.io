@@ -6,5 +6,3 @@ layout: doc
 parent: SQLFlow
 ---
 # Examples
-
-Talk is cheap, show me the ...

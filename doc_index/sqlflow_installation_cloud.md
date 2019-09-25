@@ -6,5 +6,3 @@ layout: default
 parent: Installation
 ---
 # Install SQLFlow on Cloud
-
-GCP, Aliyun..

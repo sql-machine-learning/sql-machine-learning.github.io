@@ -6,5 +6,3 @@ layout: default
 has_children: true
 ---
 # Installation 
-
-How to install SQLFlow

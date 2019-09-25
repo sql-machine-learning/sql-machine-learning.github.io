@@ -6,5 +6,3 @@ layout: doc
 parent: SQLFlow
 ---
 # Design
-
-How we design the SQLFlow

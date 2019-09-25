@@ -1,6 +1,6 @@
 main:
   - title: "User Guide"
-    url: sqlflow/doc/user_guide
+    url: sqlflow/doc/language_guide
   - title: "Documents"
     url: doc_index/sqlflow
   - title: "ElasticDL"

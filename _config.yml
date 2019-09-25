@@ -20,108 +20,102 @@ color_scheme: nil
 ga_tracking: UA-17331483-8
 
 defaults:
-  - 
-    scope:
+  - scope:
       path: "sqlflow"
     values:
+      layout: "doc"
       nav_exclude: true
-  - 
-    scope:
+      grand_parent: SQLFlow
+      prefix: '/sqlflow/'
+  - scope:
       path: "elasticdl"
     values:
+      layout: "doc"
       nav_exclude: true
-  - 
-    scope:
-      path: "models"
-    values:
-      nav_exclude: true
-  - 
-    scope:
+      grand_parent: ElasticDL 
+      prefix: '/elasticdl/'
+  - scope:
       path: "pysqlflow"
     values:
+      layout: "doc"
       nav_exclude: true
-  - 
-    scope:
+      grand_parent: PySQLFlow
+      prefix: '/pysqlflow/'
+  - scope:
       path: "gohive"
     values:
+      layout: "doc"
       nav_exclude: true
-  - 
-    scope:
+      grand_parent: GoHive 
+      prefix: '/gohive/'
+  - scope:
       path: "gomaxcompute"
     values:
+      layout: "doc"
       nav_exclude: true
-  - 
-    scope:
+      grand_parent: GoMaxCompute
+      prefix: '/gomaxcompute/'
+  - scope:
       path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
       parent: Get Started
       nav_order: 1
-  - 
-    scope:
+  - scope:
       path: "sqlflow/doc/user_guide.md"
     values:
       nav_exclude: false 
       parent: Get Started
       nav_order: 2
-  - 
-    scope:
+  - scope:
       path: "sqlflow/doc/run/repl.md"
     values:
       nav_exclude: true
       parent: Get Started
       nav_order: 3
-  - 
-    scope:
+  - scope:
       path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
       parent: Installation
       nav_order: 1
-  - 
-    scope:
+  - scope:
       path: "sqlflow/doc/run/gcp.md"
     values:
       nav_exclude: false
       parent: Install SQLFlow on Cloud
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/run/kubernetes.md"
     values:
       nav_exclude: false
       parent: Install SQLFlow on Cloud
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/run_with_mysql.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/run_with_hive.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/run_with_maxcompute.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
       nav_order: 3
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/tutorial/iris-dnn.md"
     values:
       nav_exclude: false
       parent: Examples
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/tutorial/imdb-stackedbilstm.md"
     values:
       nav_exclude: false
@@ -197,106 +191,91 @@ defaults:
       nav_exclude: false
       parent: Design
       nav_order: 7
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_feature_derivation.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 8
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_syntax.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 9
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/build.md"
     values:
       nav_exclude: false
       parent: Contributes
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/walkthrough.md"
     values:
       nav_exclude: false
       parent: Contributes
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "models/doc/contribute_models.md"
     values:
       nav_exclude: false
       parent: Contributes
       nav_order: 3
-  -
-    scope:
+  - scope:
       path: "gohive/README.md"
     values:
       nav_exclude: false
       parent: GoHive
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "gohive/doc/design.md"
     values:
       nav_exclude: false
       parent: GoHive
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "gohive/docker/README.md"
     values:
       nav_exclude: false
       parent: GoHive
       nav_order: 3
-  -
-    scope:
+  - scope:
       path: "gomaxcompute/README.md"
     values:
       nav_exclude: false
       parent: GoMaxCompute 
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "pysqlflow/doc/design/client_design_doc.md"
     values:
       nav_exclude: false
       parent: PySQLFlow 
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "pysqlflow/doc/design/magic_design_doc.md"
     values:
       nav_exclude: false
       parent: PySQLFlow 
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "elasticdl/doc/data_preparation_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL 
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "elasticdl/doc/distributed_embedding_layer_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL 
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "elasticdl/doc/tutorials/elasticdl_cloud.md"
     values:
       nav_exclude: false
       parent: ElasticDL 
       nav_order: 3
-  - 
-    scope:
+  - scope:
       path: "elasticdl/doc/worker_optimization_design.md"
     values:
       nav_exclude: false

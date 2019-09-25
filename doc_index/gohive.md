@@ -1,7 +1,7 @@
 ---
 has_children: true
 title: GoHive
-nav_order: 1
+nav_order: 2
 layout: doc
 ---
 

@@ -1,7 +1,7 @@
 ---
 has_children: true
-title: Contribute
-nav_order: 6
+title: Contributes
+nav_order: 5
 layout: doc
 parent: SQLFlow
 ---

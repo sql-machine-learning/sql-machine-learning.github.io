@@ -14,4 +14,3 @@ a {color: #1BA2FF}
 
 {{content | replace: "README.md", "" | replace: ".md", "" | replace: 'href="/', href_prefix }}
 
-

@@ -5,7 +5,7 @@ nav_exclude: true
 permalink: "/"
 main: "SQLFlow"
 subtitle: "Extends SQL to support AI. Extract knowledge from Data."
-intro: "Currently support MySQL and TensorFlow. Expanding to Apache Hive, Alibaba MaxCompute, and PyTorch"
+intro: "Currently support MySQL, Apache Hive, Alibaba MaxCompute, XGBoost and TensorFlow. Expanding to PyTorch"
 features: 
   - title: 'Easy to Learn'
     content: 'Manipulate data and running AI with SQL'
@@ -14,5 +14,5 @@ features:
     content: 'MySQL, Hive, Alibaba MaxCompute, Oracle and you name it!'
     gif: 'assets/select.gif'
   - title: 'Support Many Machine Learning Toolkits'
-    content: 'TensorFlow, PyTorch, xgboost, and more!'
+    content: 'TensorFlow, PyTorch, XGBoost and more!'
 ---

@@ -1,11 +1,10 @@
 ---
 has_children: true
 title: Contribute
-nav_order: 3
+nav_order: 6
 layout: doc
 parent: SQLFlow
 ---
-
 # Contribute
 
-Dev, build and run!
+Dev, build SQLFlow and contribute models

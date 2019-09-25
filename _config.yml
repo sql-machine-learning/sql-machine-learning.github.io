@@ -18,68 +18,72 @@ exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y']
 
 defaults:
   - scope:
-      path: "sqlflow"
-    values:
-      layout: "doc"
-      nav_exclude: true
-      grand_parent: SQLFlow
-      prefix: '/sqlflow/'
-  - scope:
-      path: "sqlflow/doc/installation.md"
+      path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
-      parent: SQLFlow
+      parent: Get Started
       nav_order: 1
   - scope:
-      path: "sqlflow/doc/syntax.md"
+      path: "sqlflow/doc/user_guide.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: Get Started
+      nav_order: 2
   - scope:
-      path: "sqlflow/doc/walkthrough.md"
+      path: "sqlflow/doc/run/repl.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: Get Started
+      nav_order: 3
   - scope:
-      path: "sqlflow/doc/sql_parser.md"
+      path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: Installation
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/database_abstraction_layer.md"
+      path: "sqlflow/doc/run/gcp.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: InstallSQLFlowonCloud
+      grand_parent: Installation
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/pipe.md"
+      path: "sqlflow/doc/run/kubernetes.md"
     values:
       nav_exclude: false
-      parent: Design
+      parent: InstallSQLFlowonCloud
+      grand_parent: Installation
+      nav_order: 2
   - scope:
-      path: "sqlflow/doc/build.md"
+      path: "sqlflow/doc/run_with_mysql.md"
     values:
       nav_exclude: false
-      parent: Contribute
+      parent: Run SQLFlow with SQL Engines
+      grand_parent: Installation
+      nav_order: 1
   - scope:
-      path: "sqlflow/doc/build-tensorflow.md"
+      path: "sqlflow/doc/run_with_hive.md"
     values:
       nav_exclude: false
-      parent: Contribute
+      grand_parent: Installation
+      parent: Run SQLFlow with SQL Engines
+      nav_order: 2
   - scope:
-      path: "sqlflow/doc/mysql-setup.md"
+      path: "sqlflow/doc/run_with_maxcompute.md"
     values:
       nav_exclude: false
-      parent: Contribute
-  - scope:
-      path: "sqlflow/doc/close_producer_from_consumer.md"
-    values:
-      nav_exclude: false
-      parent: Contribute
-  - scope:
-      path: "sqlflow/doc/submitter.md"
-    values:
-      nav_exclude: false
-      parent: Contribute
+      grand_parent: Installation
+      parent: Run SQLFlow with SQL Engines
+      nav_order: 3
+
+
+
+
+
+
+
+
   - scope:
       path: "pysqlflow"
     values:

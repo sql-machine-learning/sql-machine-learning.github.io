@@ -1,11 +1,10 @@
 ---
 has_children: true
 title: Design
-nav_order: 2
+nav_order: 5
 layout: doc
 parent: SQLFlow
 ---
-
 # Design
 
-How we design SQLFLow
+How we design the SQLFlow

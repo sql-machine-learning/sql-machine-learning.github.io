@@ -28,6 +28,12 @@ defaults:
       grand_parent: SQLFlow
       prefix: '/sqlflow/'
   - scope:
+      path: "models"
+    values:
+      layout: "doc"
+      nav_exclude: true
+      grand_parent: Models 
+  - scope:
       path: "elasticdl"
     values:
       layout: "doc"
@@ -121,71 +127,61 @@ defaults:
       nav_exclude: false
       parent: Examples
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/tutorial/fraud-dnn.md"
     values:
       nav_exclude: false
       parent: Examples
       nav_order: 4
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/tutorial/housing-xgboost.md"
     values:
       nav_exclude: false
       parent: Examples
       nav_order: 5
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/tutorial/housing-analyze.md"
     values:
       nav_exclude: false
       parent: Examples
       nav_order: 6
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_alps_submitter.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 1
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_analyzer.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 2
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_xgboost_on_sqlflow.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 3
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_auth.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 4
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_clustermodel.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 5
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_customized_model.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 6
-  -
-    scope:
+  - scope:
       path: "sqlflow/doc/design/design_elasticdl_on_sqlflow.md"
     values:
       nav_exclude: false
@@ -220,6 +216,7 @@ defaults:
     values:
       nav_exclude: false
       parent: Contributes
+      grand_parent: SQLFlow
       nav_order: 3
   - scope:
       path: "gohive/README.md"

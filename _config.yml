@@ -41,34 +41,13 @@ defaults:
       grand_parent: ElasticDL 
       prefix: '/elasticdl/'
   - scope:
-      path: "pysqlflow"
-    values:
-      layout: "doc"
-      nav_exclude: true
-      grand_parent: PySQLFlow
-      prefix: '/pysqlflow/'
-  - scope:
-      path: "gohive"
-    values:
-      layout: "doc"
-      nav_exclude: true
-      grand_parent: GoHive 
-      prefix: '/gohive/'
-  - scope:
-      path: "gomaxcompute"
-    values:
-      layout: "doc"
-      nav_exclude: true
-      grand_parent: GoMaxCompute
-      prefix: '/gomaxcompute/'
-  - scope:
       path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false
       parent: Get Started
       nav_order: 1
   - scope:
-      path: "sqlflow/doc/user_guide.md"
+      path: "sqlflow/doc/language_guide.md"
     values:
       nav_exclude: false 
       parent: Get Started
@@ -218,42 +197,6 @@ defaults:
       parent: Contributes
       grand_parent: SQLFlow
       nav_order: 3
-  - scope:
-      path: "gohive/README.md"
-    values:
-      nav_exclude: false
-      parent: GoHive
-      nav_order: 1
-  - scope:
-      path: "gohive/doc/design.md"
-    values:
-      nav_exclude: false
-      parent: GoHive
-      nav_order: 2
-  - scope:
-      path: "gohive/docker/README.md"
-    values:
-      nav_exclude: false
-      parent: GoHive
-      nav_order: 3
-  - scope:
-      path: "gomaxcompute/README.md"
-    values:
-      nav_exclude: false
-      parent: GoMaxCompute 
-      nav_order: 1
-  - scope:
-      path: "pysqlflow/doc/design/client_design_doc.md"
-    values:
-      nav_exclude: false
-      parent: PySQLFlow 
-      nav_order: 1
-  - scope:
-      path: "pysqlflow/doc/design/magic_design_doc.md"
-    values:
-      nav_exclude: false
-      parent: PySQLFlow 
-      nav_order: 2
   - scope:
       path: "elasticdl/doc/data_preparation_design.md"
     values:

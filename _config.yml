@@ -22,6 +22,36 @@ ga_tracking: UA-17331483-8
 defaults:
   - 
     scope:
+      path: "sqlflow"
+    values:
+      nav_exclude: true
+  - 
+    scope:
+      path: "elasticdl"
+    values:
+      nav_exclude: true
+  - 
+    scope:
+      path: "models"
+    values:
+      nav_exclude: true
+  - 
+    scope:
+      path: "pysqlflow"
+    values:
+      nav_exclude: true
+  - 
+    scope:
+      path: "gohive"
+    values:
+      nav_exclude: true
+  - 
+    scope:
+      path: "gomaxcompute"
+    values:
+      nav_exclude: true
+  - 
+    scope:
       path: "sqlflow/doc/run/docker.md"
     values:
       nav_exclude: false

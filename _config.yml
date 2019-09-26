@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'pysqlflow', 'gohive', 'gomaxcompute']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -256,7 +256,7 @@ defaults:
     values:
       nav_exclude: false
       parent: ElasticDL
-      nav_order: 10 
+      nav_order: 10
   
 footer:
   links:

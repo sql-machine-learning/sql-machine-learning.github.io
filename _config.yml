@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'pysqlflow', 'gohive', 'gomaxcompute']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -41,7 +41,7 @@ defaults:
       grand_parent: ElasticDL 
       prefix: '/elasticdl/'
   - scope:
-      path: "sqlflow/doc/run/docker.md"
+      path: "sqlflow/doc/quick_start.md"
     values:
       nav_exclude: false
       parent: Get Started

@@ -3,7 +3,7 @@ layout: default
 ---
 
 <script>
-    document.getElementsByClassName('site-title')[0].innerHTML = "<img src='/assets/sqlflow-logo.svg' style='height: 30px' />"
+    document.getElementsByClassName('site-title')[0].innerHTML = "<img src='/assets/sqlflow-logo.png' style='height: 30px' />"
 </script>
 
 <style>

@@ -1,5 +1,5 @@
 main:
-  - title: "User Guide"
+  - title: "Language Guide"
     url: sqlflow/doc/language_guide
   - title: "Documents"
     url: doc_index/sqlflow

@@ -12,5 +12,5 @@ features:
   - title: 'Work with Many Database Management Systems'
     content: 'MySQL, Hive, Alibaba MaxCompute, Oracle and you name it!'
   - title: 'Model Training, Inference, and Explanation'
-    content: 'TensorFlow, XGBoost and SHAP!'
+    content: 'TensorFlow, Keras, XGBoost, SHAP and more!'
 ---

@@ -11,6 +11,6 @@ features:
     content: 'Manipulate data and running AI with SQL.'
   - title: 'Work with Many Database Management Systems'
     content: 'MySQL, Hive, Alibaba MaxCompute, Oracle and you name it!'
-  - title: 'Support Many Machine Learning Toolkits'
-    content: 'TensorFlow, PyTorch, XGBoost and more!'
+  - title: 'Model Training, Inference, and Explanation'
+    content: 'TensorFlow, Keras, XGBoost, SHAP and more!'
 ---

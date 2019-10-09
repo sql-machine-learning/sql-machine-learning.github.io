@@ -2,7 +2,7 @@ main:
   - title: "Language Guide"
     url: sqlflow/doc/language_guide
   - title: "Documents"
-    url: doc_index/sqlflow
+    url: doc_index/sqlflow_getstarted/
   - title: "ElasticDL"
     url: "https://elasticdl.github.io"
   - title: "GitHub"

@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/doc/design/design_ant_xgboost.md', 'sqlflow/doc/design/design_workflow.md', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -21,11 +21,39 @@ ga_tracking: UA-17331483-8
 
 defaults:
   - scope:
-      path: "sqlflow"
+      path: "sqlflow_getstarted"
     values:
       layout: "doc"
-      nav_exclude: true
-      grand_parent: SQLFlow
+      nav_exclude: false
+      grand_parent: Get Started
+      prefix: '/sqlflow/'
+  - scope:
+      path: "sqlflow_installation"
+    values:
+      layout: "doc"
+      nav_exclude: false
+      grand_parent: Installation
+      prefix: '/sqlflow/'
+  - scope:
+      path: "sqlflow_exapmles"
+    values:
+      layout: "doc"
+      nav_exclude: false
+      grand_parent: Examples
+      prefix: '/sqlflow/'
+  - scope:
+      path: "sqlflow_design"
+    values:
+      layout: "doc"
+      nav_exclude: false
+      grand_parent: Design
+      prefix: '/sqlflow/'
+  - scope:
+      path: "sqlflow_contributes"
+    values:
+      layout: "doc"
+      nav_exclude: false
+      grand_parent: Contributes
       prefix: '/sqlflow/'
   - scope:
       path: "models"
@@ -69,30 +97,35 @@ defaults:
     values:
       nav_exclude: false
       parent: Install SQLFlow on Cloud
+      grand_parent: Installation
       nav_order: 1
   - scope:
       path: "sqlflow/doc/run/kubernetes.md"
     values:
       nav_exclude: false
       parent: Install SQLFlow on Cloud
+      grand_parent: Installation
       nav_order: 2
   - scope:
       path: "sqlflow/doc/run_with_mysql.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
+      grand_parent: Installation
       nav_order: 1
   - scope:
       path: "sqlflow/doc/run_with_hive.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
+      grand_parent: Installation
       nav_order: 2
   - scope:
       path: "sqlflow/doc/run_with_maxcompute.md"
     values:
       nav_exclude: false
       parent: Run SQLFlow with SQL Engines
+      grand_parent: Installation
       nav_order: 3
   - scope:
       path: "sqlflow/doc/tutorial/iris-dnn.md"
@@ -125,59 +158,113 @@ defaults:
       parent: Examples
       nav_order: 6
   - scope:
-      path: "sqlflow/doc/design/design_alps_submitter.md"
+      path: "sqlflow/doc/design/design_syntax.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 1
   - scope:
-      path: "sqlflow/doc/design/design_analyzer.md"
+      path: "sqlflow/doc/design/design_sql_parser.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 2
   - scope:
-      path: "sqlflow/doc/design/design_xgboost_on_sqlflow.md"
+      path: "sqlflow/doc/design/design_pipe.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 3
   - scope:
-      path: "sqlflow/doc/design/design_auth.md"
+      path: "sqlflow/doc/design/design_intermediate_representation.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 4
   - scope:
-      path: "sqlflow/doc/design/design_clustermodel.md"
+      path: "sqlflow/doc/design/design_database_abstraction_layer.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 5
   - scope:
-      path: "sqlflow/doc/design/design_customized_model.md"
+      path: "sqlflow/doc/design/design_submitter.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/design/design_alps_submitter.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 6
   - scope:
-      path: "sqlflow/doc/design/design_elasticdl_on_sqlflow.md"
+      path: "sqlflow/doc/design/design_analyzer.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 7
   - scope:
-      path: "sqlflow/doc/design/design_feature_derivation.md"
+      path: "sqlflow/doc/design/design_xgboost_on_sqlflow.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 8
   - scope:
-      path: "sqlflow/doc/design/design_syntax.md"
+      path: "sqlflow/doc/design/design_auth.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 9
+  - scope:
+      path: "sqlflow/doc/design/design_clustermodel.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 10
+  - scope:
+      path: "sqlflow/doc/design/design_customized_model.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 11
+  - scope:
+      path: "sqlflow/doc/design/design_elasticdl_on_sqlflow.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 12
+  - scope:
+      path: "sqlflow/doc/design/design_training_and_validation.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 13
+  - scope:
+      path: "sqlflow/doc/design/design_train_parameters.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 14
+  - scope:
+      path: "sqlflow/doc/design/design_support_multiple_sql_statements.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 15
+  - scope:
+      path: "sqlflow/doc/design/design_feature_derivation.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 16
+  - scope:
+      path: "sqlflow/doc/design/design_close_producer_from_consumer.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 17
   - scope:
       path: "sqlflow/doc/build.md"
     values:

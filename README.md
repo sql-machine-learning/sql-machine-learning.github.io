@@ -29,7 +29,7 @@ git clone https://github.com/sql-machine-learning/sql-machine-learning.github.io
 git submodule update --init --recursive --remote
 ```
 
-**Step Three**: Fire up docker run under the repo root. Note the command will pull the image from the remote automatically. Also, make sure to replace `b90ffea2` with your personal access token. It takes a few seconds to generate the token by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). Now you can access SQLFlow.org from http://localhost:4000 with exact the same content.
+**Step Three**: Fire up docker run under the repo root. Note the command will pull the image from the remote automatically. Also, make sure to replace `b90ffea2` with your personal access token. It takes a few seconds to generate the token by following [this document](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). Now you can access SQLFlow.org from http://localhost:4000 with exactly the same content.
 
 ```bash
 cd sql-machine-learning.github.io

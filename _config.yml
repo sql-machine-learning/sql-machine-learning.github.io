@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/doc/design/design_ant_xgboost.md', 'sqlflow/doc/design/design_workflow.md', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/doc/design/design_ant_xgboost.md', 'sqlflow/doc/design/design_workflow.md', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/doc/design/design_high-available_sqlflow_server.md', 'sqlflow/doc/design/design_support_arbitrary_select.md', 'sqlflow/doc/design/model_zoo.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -367,3 +367,8 @@ compress_html:
   startings: []
   blanklines: false
   profile: false
+
+relative_links:
+  enabled:     true
+  collections: true
+

@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/doc/design/design_ant_xgboost.md', 'sqlflow/doc/design/design_workflow.md', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/doc/design/design_high-available_sqlflow_server.md', 'sqlflow/doc/design/design_support_arbitrary_select.md', 'sqlflow/doc/design/model_zoo.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/doc/design/design_ant_xgboost.md', 'sqlflow/doc/design/design_workflow.md', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -265,6 +265,24 @@ defaults:
       nav_exclude: false
       parent: Design
       nav_order: 17
+  - scope:
+      path: "sqlflow/doc/design/design_high-available_sqlflow_server.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 18
+  - scope:
+          path: "sqlflow/doc/design/design_support_arbitrary_select.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 19
+  - scope:
+          path: "sqlflow/doc/design/model_zoo.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 20
   - scope:
       path: "sqlflow/doc/build.md"
     values:

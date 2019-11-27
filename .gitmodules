@@ -23,3 +23,6 @@
 	url = https://github.com/sql-machine-learning/pysqlflow
 	branch = develop
 
+[submodule "jsqlflow"]
+	path = jsqlflow
+	url = https://github.com/sql-machine-learning/jsqlflow

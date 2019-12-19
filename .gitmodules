@@ -26,3 +26,6 @@
 [submodule "jsqlflow"]
 	path = jsqlflow
 	url = https://github.com/sql-machine-learning/jsqlflow
+[submodule "goalisa"]
+	path = goalisa
+	url = https://github.com/sql-machine-learning/goalisa

@@ -35,7 +35,7 @@ defaults:
       grand_parent: Installation
       prefix: '/sqlflow/'
   - scope:
-      path: "sqlflow_exapmles"
+      path: "sqlflow_examples"
     values:
       layout: "doc"
       nav_exclude: false

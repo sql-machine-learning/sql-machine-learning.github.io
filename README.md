@@ -6,7 +6,7 @@ This repository holds the content of [SQLFlow.org](https://sql-machine-learning.
 
 We see the following files and directories at the root of this repository:
 
-- `Gemfile` lists Ruby dependencies required by Jekyll to build this repository into a Web site.
+- `Gemfile` lists Ruby dependencies required by Jekyll to build this repository into a web site.
 - `index.md`, `_config.yml`, `_data`, `_layouts` are [what Jekyll needs](https://jekyllrb.com/docs/structure/) to build the Web site.
 - `pages` holds Jekyll [Pages](https://jekyllrb.com/docs/pages/).
 - `assets` includes figures, images, and Javascript files.

@@ -1,7 +1,9 @@
 main:
-  - title: "Quick-Start Guide"
-    url: /pages/quick-start-guide.html
-  - title: "Documentation"
-    url: /pages/documentation.html
-  - title: "About"
-    url: /pages/about.html
+  - title: "Language Guide"
+    url: sqlflow/doc/language_guide
+  - title: "Documents"
+    url: doc_index/sqlflow_getstarted/
+  - title: "ElasticDL"
+    url: "https://elasticdl.github.io"
+  - title: "GitHub"
+    url: https://github.com/sql-machine-learning

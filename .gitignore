@@ -4,3 +4,5 @@ _site
 Gemfile.lock
 *~
 .idea
+.jekyll-metadata
+*.swp

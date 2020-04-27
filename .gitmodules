@@ -1,0 +1,31 @@
+[submodule "sqlflow"]
+	path = sqlflow
+	url = https://github.com/sql-machine-learning/sqlflow
+	branch = develop
+[submodule "elasticdl"]
+	path = elasticdl
+	url = https://github.com/sql-machine-learning/elasticdl
+	branch = develop
+[submodule "models"]
+	path = models
+	url = https://github.com/sql-machine-learning/models
+	branch = develop
+[submodule "gomaxcompute"]
+	path = gomaxcompute
+	url = https://github.com/sql-machine-learning/gomaxcompute
+	branch = develop
+[submodule "gohive"]
+	path = gohive
+	url = https://github.com/sql-machine-learning/gohive
+	branch = develop
+[submodule "pysqlflow"]
+	path = pysqlflow
+	url = https://github.com/sql-machine-learning/pysqlflow
+	branch = develop
+
+[submodule "jsqlflow"]
+	path = jsqlflow
+	url = https://github.com/sql-machine-learning/jsqlflow
+[submodule "goalisa"]
+	path = goalisa
+	url = https://github.com/sql-machine-learning/goalisa

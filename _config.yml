@@ -2,7 +2,7 @@ title: 'SQLFlow'
 description: Bridging Data and AI
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md', 'sqlflow/doc/argo-setup.md', 'sqlflow/doc/design/ant_xgboost.md', 'sqlflow/doc/design/codegen_couler_use_ir.md', 'sqlflow/doc/design/couler_sqlflow.md', 'sqlflow/doc/design/high_available_sqlflow_server.md', 'sqlflow/doc/design/model_zoo_pai.md', 'sqlflow/java/parser/README.md', 'sqlflow/pkg/sql/tpp/README.md', 'sqlflow/python/couler/README.md', 'sqlflow/doc/design/workflow.md', 'sqlflow/scripts/tensorflow_step_image/README.md', 'sqlflow/pkg/parser/external/README.md', 'sqlflow/doc/tutorial/apsara2019/README.md', 'goalisa/README.md', 'sqlflow/doc/contribute_models.md']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md', 'sqlflow/doc/argo-setup.md', 'sqlflow/doc/design/ant_xgboost.md', 'sqlflow/doc/design/codegen_couler_use_ir.md', 'sqlflow/doc/design/couler_sqlflow.md', 'sqlflow/doc/design/high_available_sqlflow_server.md', 'sqlflow/doc/design/model_zoo_pai.md', 'sqlflow/java/parser/README.md', 'sqlflow/pkg/sql/tpp/README.md', 'sqlflow/python/couler/README.md', 'sqlflow/doc/design/workflow.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -152,41 +152,11 @@ defaults:
       parent: Examples
       nav_order: 5
   - scope:
-      path: "sqlflow/doc/tutorial/housing-explain.md"
+      path: "sqlflow/doc/tutorial/housing-analyze.md"
     values:
       nav_exclude: false
       parent: Examples
       nav_order: 6
-  - scope:
-      path: "sqlflow/doc/tutorial/energe_lstmbasedtimeseries.md"
-    values:
-      nav_exclude: false
-      parent: Examples
-      nav_order: 7
-  - scope:
-      path: "sqlflow/doc/tutorial/apsara2019/carprice_xgboost/README.md"
-    values:
-      nav_exclude: false
-      parent: Examples
-      nav_order: 8
-  - scope:
-      path: "sqlflow/doc/tutorial/apsara2019/titanic_dnn/README.md"
-    values:
-      nav_exclude: false
-      parent: Examples
-      nav_order: 9
-  - scope:
-      path: "sqlflow/doc/tutorial/apsara2019/carprice_xgboost/README.md"
-    values:
-      nav_exclude: false
-      parent: Examples
-      nav_order: 10
-  - scope:
-      path: "sqlflow/doc/tutorial/apsara2019/activepower_clustering/README.md"
-    values:
-      nav_exclude: false
-      parent: Examples
-      nav_order: 11
   - scope:
       path: "sqlflow/doc/design/syntax.md"
     values:
@@ -230,7 +200,7 @@ defaults:
       parent: Design
       nav_order: 6
   - scope:
-      path: "sqlflow/doc/design/explainer.md"
+      path: "sqlflow/doc/design/analyzer.md"
     values:
       nav_exclude: false
       parent: Design
@@ -278,6 +248,12 @@ defaults:
       parent: Design
       nav_order: 14
   - scope:
+      path: "sqlflow/doc/design/support_multiple_sql_statements.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 15
+  - scope:
       path: "sqlflow/doc/design/feature_derivation.md"
     values:
       nav_exclude: false
@@ -290,59 +266,23 @@ defaults:
       parent: Design
       nav_order: 17
   - scope:
-      path: "sqlflow/doc/design/high_available_sqlflow_server.md"
+      path: "sqlflow/doc/design/high-available_sqlflow_server.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 18
   - scope:
-      path: "sqlflow/doc/design/model_zoo.md"
+          path: "sqlflow/doc/design/support_arbitrary_select.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 19
   - scope:
-      path: "sqlflow/doc/design/workflow_package.md"
+          path: "sqlflow/doc/design/model_zoo.md"
     values:
       nav_exclude: false
       parent: Design
       nav_order: 20
-  - scope:
-      path: "sqlflow/doc/design/sql_program_dependency_analyze.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 21
-  - scope:
-      path: "sqlflow/doc/design/show_train_stmt.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 22
-  - scope:
-      path: "sqlflow/doc/design/model_market.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 23
-  - scope:
-      path: "sqlflow/doc/design/logs.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 24
-  - scope:
-      path: "sqlflow/doc/design/katib_on_sqlflow.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 25
-  - scope:
-      path: "sqlflow/doc/design/argo_workflow_on_sqlflow.md"
-    values:
-      nav_exclude: false
-      parent: Design
-      nav_order: 26
   - scope:
       path: "sqlflow/doc/build.md"
     values:
@@ -363,114 +303,66 @@ defaults:
       grand_parent: SQLFlow
       nav_order: 3
   - scope:
-      path: "elasticdl/docs/tutorials/get_started.md"
+      path: "elasticdl/doc/data_preparation_design.md"
     values:
       nav_exclude: false
-      parent: ElasticDL
+      parent: ElasticDL 
       nav_order: 1
   - scope:
-      path: "elasticdl/docs/designs/overall.md"
+      path: "elasticdl/doc/distributed_embedding_layer_design.md"
     values:
       nav_exclude: false
-      parent: ElasticDL
+      parent: ElasticDL 
       nav_order: 2
   - scope:
-      path: "elasticdl/docs/designs/high_level_api.md"
+      path: "elasticdl/doc/tutorials/elasticdl_cloud.md"
     values:
       nav_exclude: false
-      parent: ElasticDL
+      parent: ElasticDL 
       nav_order: 3
   - scope:
-      path: "elasticdl/docs/designs/dynamic_data_sharding.md"
+      path: "elasticdl/doc/worker_optimization_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 4
   - scope:
-      path: "elasticdl/docs/designs/concepts.md"
+      path: "elasticdl/doc/odps_support_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 5
   - scope:
-      path: "elasticdl/docs/designs/parameter_server.md"
+      path: "elasticdl/doc/model_evaluation_design.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 6
   - scope:
-      path: "elasticdl/docs/designs/high_performance_ps.md"
+      path: "elasticdl/doc/model_building.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 7
   - scope:
-      path: "elasticdl/docs/designs/distributed_embedding_layer.md"
+      path: "elasticdl/doc/high-level-api.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 8
   - scope:
-      path: "elasticdl/docs/designs/allreduce.md"
+      path: "elasticdl/doc/elastic_sync_sgd.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 9
   - scope:
-      path: "elasticdl/docs/designs/elastic_sync_sgd.md"
+      path: "elasticdl/doc/elastic_scheduling.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 10
-  - scope:
-      path: "elasticdl/docs/designs/async_sgd.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 11
-  - scope:
-      path: "elasticdl/docs/designs/checkpoint_design.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 12
-  - scope:
-      path: "elasticdl/docs/designs/model_serving.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 13
-  - scope:
-      path: "elasticdl/docs/designs/keras_callback.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 14
-  - scope:
-      path: "elasticdl/docs/designs/data_preparation.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 15
-  - scope:
-      path: "elasticdl/docs/designs/data_io_pipeline.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 16
-  - scope:
-      path: "elasticdl/docs/designs/data_transform.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 17
-  - scope:
-      path: "elasticdl/docs/designs/sqlflow_integration.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 18
-
+  
 footer:
   links:
     - label: "GitHub"

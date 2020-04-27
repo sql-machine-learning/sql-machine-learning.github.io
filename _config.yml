@@ -1,5 +1,6 @@
 title: 'SQLFlow'
 description: Bridging Data and AI
+repository: weiguoz/sql-machine-learning.github.io
 
 permalink: pretty
 exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md', 'sqlflow/doc/argo-setup.md', 'sqlflow/doc/design/ant_xgboost.md', 'sqlflow/doc/design/codegen_couler_use_ir.md', 'sqlflow/doc/design/couler_sqlflow.md', 'sqlflow/doc/design/high_available_sqlflow_server.md', 'sqlflow/doc/design/model_zoo_pai.md', 'sqlflow/java/parser/README.md', 'sqlflow/pkg/sql/tpp/README.md', 'sqlflow/python/couler/README.md', 'sqlflow/doc/design/workflow.md', 'sqlflow/scripts/tensorflow_step_image/README.md', 'sqlflow/pkg/parser/external/README.md', 'sqlflow/doc/tutorial/apsara2019/README.md', 'goalisa/README.md', 'sqlflow/doc/contribute_models.md', 'sqlflow/doc/run/workflow_mode.md']

@@ -29,3 +29,7 @@
 [submodule "goalisa"]
 	path = goalisa
 	url = https://github.com/sql-machine-learning/goalisa
+[submodule "playground"]
+	path = playground
+	url = https://github.com/sql-machine-learning/playground
+	branch = master

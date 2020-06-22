@@ -478,6 +478,12 @@ defaults:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 18
+  - scope:
+      path: "elasticdl/docs/blogs/elasticdl-antfin-introduction.md"
+    values:
+      nav_exclude: false
+      parent: ElasticDL
+      nav_order: 19
 
 footer:
   links:

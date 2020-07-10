@@ -371,49 +371,49 @@ defaults:
       grand_parent: SQLFlow
       nav_order: 3
   - scope:
-      path: "elasticdl/docs/tutorials/get_started.md"
+      path: "elasticdl/docs/tutorials/elasticdl_local.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 1
   - scope:
-      path: "elasticdl/docs/designs/overall.md"
+      path: "elasticdl/docs/tutorials/elasticdl_cloud.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 2
   - scope:
-      path: "elasticdl/docs/designs/high_level_api.md"
+      path: "elasticdl/docs/tutorials/elasticdl_on_prem_cluster.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 3
   - scope:
-      path: "elasticdl/docs/designs/dynamic_data_sharding.md"
+      path: "elasticdl/docs/tutorials/model_contribution.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 4
   - scope:
-      path: "elasticdl/docs/designs/concepts.md"
+      path: "elasticdl/docs/tutorials/preprocessing_tutorial.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 5
   - scope:
-      path: "elasticdl/docs/designs/parameter_server.md"
+      path: "elasticdl/docs/tutorials/dev.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 6
   - scope:
-      path: "elasticdl/docs/designs/high_performance_ps.md"
+      path: "elasticdl/docs/designs/overall.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 7
   - scope:
-      path: "elasticdl/docs/designs/distributed_embedding_layer.md"
+      path: "elasticdl/docs/designs/high_performance_ps.md"
     values:
       nav_exclude: false
       parent: ElasticDL
@@ -425,65 +425,41 @@ defaults:
       parent: ElasticDL
       nav_order: 9
   - scope:
-      path: "elasticdl/docs/designs/elastic_sync_sgd.md"
+      path: "elasticdl/docs/designs/distributed_embedding_layer.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 10
   - scope:
-      path: "elasticdl/docs/designs/async_sgd.md"
+      path: "elasticdl/docs/designs/dynamic_data_sharding.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 11
   - scope:
-      path: "elasticdl/docs/designs/checkpoint_design.md"
+      path: "elasticdl/docs/designs/data_io_pipeline.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 12
   - scope:
-      path: "elasticdl/docs/designs/model_serving.md"
+      path: "elasticdl/docs/designs/custom_data_source_support.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 13
   - scope:
-      path: "elasticdl/docs/designs/keras_callback.md"
+      path: "elasticdl/docs/designs/data_transform.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 14
   - scope:
-      path: "elasticdl/docs/designs/data_preparation.md"
+      path: "elasticdl/docs/designs/model_serving.md"
     values:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 15
-  - scope:
-      path: "elasticdl/docs/designs/data_io_pipeline.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 16
-  - scope:
-      path: "elasticdl/docs/designs/data_transform.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 17
-  - scope:
-      path: "elasticdl/docs/designs/sqlflow_integration.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 18
-  - scope:
-      path: "elasticdl/docs/blogs/elasticdl-antfin-introduction.md"
-    values:
-      nav_exclude: false
-      parent: ElasticDL
-      nav_order: 19
 
 footer:
   links:

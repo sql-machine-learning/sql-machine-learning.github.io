@@ -3,7 +3,7 @@ description: Bridging Data and AI
 repository: sql-machine-learning/sql-machine-learning.github.io
 
 permalink: pretty
-exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md', 'sqlflow/doc/argo-setup.md', 'sqlflow/doc/design/ant_xgboost.md', 'sqlflow/doc/design/codegen_couler_use_ir.md', 'sqlflow/doc/design/couler_sqlflow.md', 'sqlflow/doc/design/high_available_sqlflow_server.md', 'sqlflow/doc/design/model_zoo_pai.md', 'sqlflow/java/parser/README.md', 'sqlflow/pkg/sql/tpp/README.md', 'sqlflow/python/couler/README.md', 'sqlflow/doc/design/workflow.md', 'sqlflow/scripts/tensorflow_step_image/README.md', 'sqlflow/pkg/parser/external/README.md', 'sqlflow/doc/tutorial/apsara2019/README.md', 'goalisa/README.md', 'sqlflow/doc/contribute_models.md', 'sqlflow/doc/run/workflow_mode.md', 'playground/sqlflow', 'playground/index.html', 'playground/README.md']
+exclude: ['*.sql', '*.go', '.gitignore', '*.sh', '*.proto', '*.y', '*.py', 'vendor', 'gohive/doc/design.md', 'gohive/docker/README.md', 'pysqlflow/doc/design/client_design_doc.md', 'pysqlflow/doc/design/magic_design_doc.md', 'sqlflow/doc/mysql-setup.md', 'sqlflow/doc/tutorial/aspara2019/', 'sqlflow/python/README.md', 'sqlflow/parser/README.md', 'sqlflow/parser/remote/README.md', 'sqlflow/parser/remote/hiveql/README.md', 'sqlflow/scripts/markdown_link_check/README.md', 'sqlflow/pkg/sql/codegen/xgboost/README.md', 'sqlflow/doc/model_parameter.md', 'sqlflow/doc/argo-setup.md', 'sqlflow/doc/design/ant_xgboost.md', 'sqlflow/doc/design/codegen_couler_use_ir.md', 'sqlflow/doc/design/couler_sqlflow.md', 'sqlflow/doc/design/high_available_sqlflow_server.md', 'sqlflow/doc/design/model_zoo_pai.md', 'sqlflow/java/parser/README.md', 'sqlflow/pkg/sql/tpp/README.md', 'sqlflow/python/couler/README.md', 'sqlflow/doc/design/workflow.md', 'sqlflow/scripts/tensorflow_step_image/README.md', 'sqlflow/pkg/parser/external/README.md', 'sqlflow/doc/tutorial/apsara2019/README.md', 'goalisa/README.md', 'sqlflow/doc/contribute_models.md', 'sqlflow/doc/run/workflow_mode.md', 'playground/sqlflow', 'playground/index.html', 'playground/README.md', 'sqlflow/docker/step/README.md', 'sqlflow/go/parser/external/README.md', 'sqlflow/doc/design/contribute_models_new.md', 'sqlflow/docker/dev/README.md', 'doc_index/sqlflow_installation_cloud.md', 'sqlflow/doc/run/docker.md', 'sqlflow/doc/run/gcp.md', 'doc_index/sqlflow_installation_sqlengines.md']
 
 search_enabled: true
 search_tokenizer_separator: /[\s/]+/
@@ -63,6 +63,13 @@ defaults:
       nav_exclude: true
       grand_parent: Models 
   - scope:
+      path: "sqlflow_doc_cn"
+    values:
+      layout: "doc"
+      nav_exclude: false
+      grand_parent: 中文文档
+      prefix: '/sqlflow/'
+  - scope:
       path: "elasticdl"
     values:
       layout: "doc"
@@ -88,36 +95,39 @@ defaults:
       parent: Get Started
       nav_order: 3
   - scope:
-      path: "playground/dev.md"
+      path: "sqlflow/doc/export_model.md"
     values:
-      nav_exclude: false
+      nav_exclude: true
       parent: Get Started
-      grand_parent: Installation
-      nav_order: 4
+      nav_order: 3
+  - scope:
+      path: "sqlflow/doc/run/cli.md"
+    values:
+      nav_exclude: true
+      parent: Get Started
+      nav_order: 3
   - scope:
       path: "sqlflow/doc/run/docker.md"
+    values:
+      nav_exclude: true
+      parent: Get Started
+      nav_order: 3
+  - scope:
+      path: "playground/dev.md"
     values:
       nav_exclude: false
       parent: Installation
       nav_order: 1
   - scope:
-      path: "sqlflow/doc/run/gcp.md"
-    values:
-      nav_exclude: false
-      parent: Install SQLFlow on Cloud
-      grand_parent: Installation
-      nav_order: 1
-  - scope:
       path: "sqlflow/doc/run/kubernetes.md"
     values:
       nav_exclude: false
-      parent: Install SQLFlow on Cloud
-      grand_parent: Installation
+      parent: Installation
       nav_order: 2
   - scope:
       path: "sqlflow/doc/run_with_mysql.md"
     values:
-      nav_exclude: false
+      nav_exclude: true
       parent: Run SQLFlow with SQL Engines
       grand_parent: Installation
       nav_order: 1
@@ -195,6 +205,30 @@ defaults:
       nav_exclude: false
       parent: Examples
       nav_order: 11
+  - scope:
+      path: "sqlflow/doc/tutorial/cora-gcn.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 12
+  - scope:
+      path: "sqlflow/doc/tutorial/score_card.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 13
+  - scope:
+      path: "sqlflow/doc/tutorial/fraud-analysis.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 13
+  - scope:
+      path: "sqlflow/doc/tutorial/optimization_guide.md"
+    values:
+      nav_exclude: false
+      parent: Examples
+      nav_order: 14
   - scope:
       path: "sqlflow/doc/design/syntax.md"
     values:
@@ -352,6 +386,84 @@ defaults:
       parent: Design
       nav_order: 26
   - scope:
+      path: "sqlflow/doc/design/contribute_models_comparison.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 27
+  - scope:
+      path: "sqlflow/doc/design/diag_attribute_error.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 28
+  - scope:
+      path: "sqlflow/doc/design/sparse_transformer.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 29
+  - scope:
+      path: "sqlflow/doc/design/xgboost_feature_column.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 30
+  - scope:
+      path: "sqlflow/doc/design/get_model_metadata_in_prediction_codegen.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 31
+  - scope:
+      path: "sqlflow/doc/design/programming_solver.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 32
+  - scope:
+      path: "sqlflow/doc/design/model_meta_storage.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 33
+  - scope:
+      path: "sqlflow/doc/design/numeric_column_clause.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 34
+  - scope:
+      path: "sqlflow/doc/design/codegen.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 35
+  - scope:
+      path: "sqlflow/doc/design/cli.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 36
+  - scope:
+      path: "sqlflow/doc/design/cli_model_zoo_cmd.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 37
+  - scope:
+      path: "playground/python/sqlflow_playground/playground_server_design.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 38
+  - scope:
+      path: "sqlflow/doc/design/to_run.md"
+    values:
+      nav_exclude: false
+      parent: Design
+      nav_order: 39
+  - scope:
       path: "sqlflow/doc/build.md"
     values:
       nav_exclude: false
@@ -364,7 +476,7 @@ defaults:
       parent: Contributes
       nav_order: 2
   - scope:
-      path: "models/doc/contribute_models.md"
+      path: "sqlflow/doc/contribute_models.md"
     values:
       nav_exclude: false
       parent: Contributes
@@ -484,7 +596,54 @@ defaults:
       nav_exclude: false
       parent: ElasticDL
       nav_order: 19
-
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/index.md"
+    values:
+      nav_exclude: false
+      parent: 中文文档
+      nav_order: 1
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/quickstart.cn.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/models/rnn_based_time_series.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/oc/sqlflow.org_cn/develop_tutorial.cn.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/model_list.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/credit_card_fraud.cn.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/titanic_survival_prediction.cn.md"
+    values:
+      nav_exclude: true
+      parent: 中文文档
+      nav_order: 2
+  - scope:
+      path: "sqlflow/doc/sqlflow.org_cn/develop_tutorial.cn.md"
+    values:
+      nav_exclude: false
+      parent: 中文文档
+      nav_order: 2
 footer:
   links:
     - label: "GitHub"

@@ -886,13 +886,19 @@
                         <div class="title">
                             <div class="main-nav">
                                 <div class="logo">
-                                    <img alt="logo" src="assets/sqlflow-logo.png" />
+                                    <img alt="logo" src="/assets/sqlflow-logo.png" />
                                 </div>
 
                                 <ul class="inline-list right">
-                                    {% for link in site.data.navigation.main %}
-                                    <li class="hide-for-small"><a href="{{link.url}}">{{link.title}}</a></li>
-                                    {% endfor %}
+                                    {% if page.lang == 'cn' %}
+                                        {% for link in site.data.navigation.cn%}
+                                        <li class="hide-for-small"><a href="{{link.url}}">{{link.title}}</a></li>
+                                        {% endfor %}
+                                    {% else %}
+                                        {% for link in site.data.navigation.main %}
+                                        <li class="hide-for-small"><a href="{{link.url}}">{{link.title}}</a></li>
+                                        {% endfor %}
+                                    {% endif %}
                                     <li class="off-canvas-nav-item" id="menu-btn"><a class="right-off-canvas-toggle menu-icon">Menu<span></span></a></li>
                                 </ul>
                             </div>
@@ -903,9 +909,15 @@
                 <aside class="right-off-canvas-menu">
                     <ul class="main-pages">
                         <li><a href="/" class="menu-icon">Home</a></li>
-                        {% for link in site.data.navigation.main %}
-                        <li><a href="{{link.url}}">{{link.title}}</a></li>
-                        {% endfor %}
+                        {% if page.lang == 'cn' %}
+                            {% for link in site.data.navigation.cn %}
+                            <li><a href="{{link.url}}">{{link.title}}</a></li>
+                            {% endfor %}
+                        {% else %}
+                            {% for link in site.data.navigation.main %}
+                            <li><a href="{{link.url}}">{{link.title}}</a></li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </aside>
 
@@ -921,7 +933,7 @@
                                     </div>
 
                                     <div align=center class="sh-console sh-shadow" style="width: 800px;margin: 0 auto;">
-                                        <img src="assets/instruction.gif" alt="instruction"/>
+                                        <img src="/assets/instruction.gif" alt="instruction"/>
                                         <!--<div class="sh sh-command " name="select">-->
                                             <!--sqlflow>&nbsp;select * from <strong style='color:#3a92c8;'>iris.train</strong> limit 2;-->
                                         <!--</div>-->

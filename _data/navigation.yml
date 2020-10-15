@@ -1,9 +1,22 @@
 main:
   - title: "Language Guide"
-    url: sqlflow/doc/language_guide
+    url: /sqlflow/doc/language_guide
   - title: "Documents"
-    url: doc_index/sqlflow_getstarted/
+    url: /doc_index/sqlflow_getstarted/
   - title: "ElasticDL"
     url: "https://elasticdl.github.io"
   - title: "GitHub"
     url: https://github.com/sql-machine-learning
+  - title: "中文"
+    url: /index_cn
+cn:
+  - title: "语言手册"
+    url: /sqlflow/doc/language_guide
+  - title: "文档"
+    url: /doc_index/sqlflow_getstarted/
+  - title: "ElasticDL"
+    url: "https://elasticdl.github.io"
+  - title: "GitHub"
+    url: https://github.com/sql-machine-learning
+  - title: "English"
+    url: /
